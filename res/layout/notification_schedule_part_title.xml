@@ -1,0 +1,12 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notification_schedule_textview_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:layout_marginLeft="6dp"
+    android:ellipsize="end"
+    android:maxLines="1"
+    android:minLines="1"
+    android:singleLine="true"
+    android:text="A Lesson"
+    android:textAppearance="@style/TextAppearance.Compat.Notification.Title" />

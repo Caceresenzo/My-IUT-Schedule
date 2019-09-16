@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="24dp"
+    android:layout_margin="2dp"
+    android:divider="@drawable/notification_item_devider"
+    android:gravity="center"
+    android:showDividers="middle" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginRight="4dp" >
+
+        <ImageView
+            android:id="@+id/notification_schedule_imageview_icon_location"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_map_marker_white_24dp" />
+
+        <TextView
+            android:id="@+id/notification_schedule_textview_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/notification_schedule_imageview_icon_location"
+            android:text="Room ABC"
+            android:textAppearance="@style/TextAppearance.Compat.Notification.Info" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginRight="4dp" >
+
+        <ImageView
+            android:id="@+id/notification_schedule_imageview_icon_time_range"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_clock_outline_24dp" />
+
+        <TextView
+            android:id="@+id/notification_schedule_textview_time_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/notification_schedule_imageview_icon_time_range"
+            android:text="8h - 12h"
+            android:textAppearance="@style/TextAppearance.Compat.Notification.Info" />
+    </RelativeLayout>
+
+</LinearLayout>

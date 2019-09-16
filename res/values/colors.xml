@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Dark blue (main color) -->
+    <!-- <color name="colorPrimary">#1C1C1C</color> -->
+    <!-- <color name="colorAccent">#4FC3F7</color> -->
+    <!-- <color name="colorBackground">#151515</color> -->
+    <!-- <color name="colorPanel">#191919</color> -->
+    <!-- <color name="colorImage">#252525</color> -->
+    <!-- <color name="colorCard">#202020</color> -->
+    <!-- <color name="colorButton">#424242</color> -->
+    <!-- <color name="colorError">#f44336</color> -->
+
+    <color name="colorPrimary">#E72063</color>
+    <color name="colorAccent">#F2B43B</color>
+    <color name="colorBackground">#F1F5F8</color>
+    <color name="colorPanel">#F1F5F8</color>
+    <color name="colorImage">#FF236D</color>
+    <color name="colorCard">#C01A5A</color>
+    <color name="colorButton">@color/colorAccent</color>
+    <color name="colorError">#f44336</color>
+    <color name="colorText">#707070</color>
+    <!--  -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_deep">#666666</color>
+    <color name="gray_300">#E0E0E0</color>
+
+</resources>

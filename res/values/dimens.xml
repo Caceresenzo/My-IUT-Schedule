@@ -1,0 +1,129 @@
+<resources>
+
+    <!-- ACTIVITY -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- COMMON -->
+    <dimen name="common_title_margin">12dp</dimen>
+
+    <!-- NAV BAR -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">80dp</dimen>
+
+    <!-- FLOATING BUTTON ACTION -->
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- CARDVIEW -->
+    <dimen name="cardview_padding">3dp</dimen>
+    <dimen name="card_recycler_corner_radius">2dp</dimen>
+    <dimen name="card_recycler_elevation">0dp</dimen>
+
+    <!-- CARD VIEWS -->
+    <dimen name="main_card_margin_small">2dp</dimen>
+    <dimen name="main_card_margin_horizontal_small">2dp</dimen>
+    <dimen name="main_card_margin_vertical_small">2dp</dimen>
+    <dimen name="main_card_margin">4dp</dimen>
+    <dimen name="main_card_margin_horizontal">4dp</dimen>
+    <dimen name="main_card_margin_vertical">4dp</dimen>
+    <dimen name="main_card_margin_big">8dp</dimen>
+    <dimen name="main_card_margin_horizontal_big">8dp</dimen>
+    <dimen name="main_card_margin_vertical_big">8dp</dimen>
+
+    <!--  -->
+    <dimen name="activity_horizontal_margin_big_activity">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="app_bar_height_image_view">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_margin_small">8dp</dimen>
+    <dimen name="text_margin_very_small">4dp</dimen>
+    <dimen name="btn_padding">20dp</dimen>
+    <dimen name="btn_margin">14dp</dimen>
+    <dimen name="card_margin_horizontal">8dp</dimen>
+    <dimen name="card_margin_vertical">8dp</dimen>
+    <dimen name="card_margin_horizontal_big_activity">8dp</dimen>
+    <dimen name="card_margin_vertical_big_activity">4dp</dimen>
+    <dimen name="main_card_margin_horizontal">4dp</dimen>
+    <dimen name="main_card_margin_vertical">4dp</dimen>
+    <dimen name="main_card_margin_horizontal_small">2dp</dimen>
+    <dimen name="main_card_margin_vertical_small">2dp</dimen>
+    <dimen name="main_card_margin_horizontal_big_activity">8dp</dimen>
+    <dimen name="card_title_margin_top">24dp</dimen>
+    <dimen name="card_title_margin">16dp</dimen>
+    <dimen name="card_subtitle_margin">16dp</dimen>
+    <dimen name="card_button_margin">8dp</dimen>
+    <dimen name="zero_horizontal_margin">0dp</dimen>
+    <dimen name="zero_horizontal_margin_big_activity">0dp</dimen>
+    <dimen name="start_page_image_size">144dp</dimen>
+    <dimen name="share_view_round_margin">16dp</dimen>
+    <dimen name="big_activity_margin_vertical">96dp</dimen>
+    <dimen name="big_activity_margin_horizontal">72dp</dimen>
+    <dimen name="big_activity_fab_margin">16dp</dimen>
+    <dimen name="big_activity_text_margin">16dp</dimen>
+
+    <!-- Toolbar -->
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+    <!-- preferenceFragment -->
+    <dimen name="preference_fragment_padding_bottom">0dp</dimen>
+    <dimen name="preference_fragment_padding_side">16dp</dimen>
+
+    <integer name="preference_fragment_scrollbarStyle">0x02000000</integer>
+
+    <!-- Defaults -->
+    <!-- <dimen name="activity_horizontal_margin">6dp</dimen> -->
+    <!-- <dimen name="activity_detail_horizontal_margin">18dp</dimen> -->
+    <dimen name="activity_vertical_margin">6dp</dimen>
+
+    <bool name="isTablet">false</bool>
+    <bool name="isWideTablet">false</bool>
+
+    <dimen name="highlight_height">200dp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="spacing_xxs">2dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_s">6dp</dimen>
+    <dimen name="spacing_m">8dp</dimen>
+    <dimen name="spacing_l">12dp</dimen>
+    <dimen name="spacing_xl">16dp</dimen>
+    <dimen name="spacing_xxl">18dp</dimen>
+    <dimen name="textsize_xxs">10sp</dimen>
+    <dimen name="textsize_xs">12sp</dimen>
+    <dimen name="textsize_s">14sp</dimen>
+    <dimen name="textsize_m">16sp</dimen>
+    <dimen name="textsize_l">18sp</dimen>
+    <dimen name="textsize_xl">20sp</dimen>
+    <dimen name="textsize_xxl">25sp</dimen>
+
+    <!-- DetailLayouts -->
+    <dimen name="detail_margin">0dp</dimen>
+    <dimen name="image_height_wordpress">250dp</dimen>
+    <dimen name="image_height_youtube">200dp</dimen>
+
+    <!-- Drawer -->
+    <dimen name="drawer_width">304dp</dimen>
+
+    <!-- WooCommerce -->
+    <dimen name="woocommerce_category_width">200dp</dimen>
+    <dimen name="woocommerce_category_height">125dp</dimen>
+    <dimen name="woocommerce_padding">4dp</dimen>
+    <dimen name="woocommerce_related_product_width">200dp</dimen>
+
+    <!-- SoundCloud ! -->
+    <dimen name="playback_view_height">100dp</dimen>
+    <dimen name="default_padding">8dp</dimen>
+    <dimen name="simple_sound_cloud_notification_title">18sp</dimen>
+    <dimen name="simple_sound_cloud_notification_subtitle">14sp</dimen>
+    <dimen name="simple_sound_cloud_notification_icon">64dp</dimen>
+    <dimen name="simple_sound_cloud_notification_padding">8dp</dimen>
+
+    <!-- (Overview) Card -->
+    <dimen name="card_image_height">160dp</dimen>
+    <dimen name="card_text_height">140dp</dimen>
+    <dimen name="card_width_overview">240dp</dimen>
+
+    <!-- Attachment pager -->
+    <dimen name="thumbnail_height">32dp</dimen>
+
+</resources>

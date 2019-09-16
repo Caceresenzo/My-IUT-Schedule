@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app1="http://schemas.android.com/apk/res/caceresenzo.apps.iutschedule">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/fragment_schedule_swiperefreshlayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.alamkanak.weekview.WeekView
+            android:id="@+id/weekView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:columnGap="8dp"
+            app:dayBackgroundColor="#05000000"
+            app:eventTextColor="@android:color/white"
+            app:headerColumnBackground="#ffffffff"
+            app:headerColumnPadding="8dp"
+            app:headerColumnTextColor="#8f000000"
+            app:headerRowBackgroundColor="#efefef"
+            app:headerRowPadding="12dp"
+            app:hourHeight="60dp"
+            app:maxHourHeight="60dp"
+            app1:showNowLine="true"
+            app:noOfVisibleDays="3"
+            app:textSize="12sp"
+            app:todayBackgroundColor="#1848adff"
+            app:todayHeaderTextColor="#2789e4" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

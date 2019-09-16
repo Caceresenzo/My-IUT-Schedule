@@ -1,0 +1,84 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorBackground</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- <item name="colorBackground">@color/colorBackground</item> -->
+        <!-- <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item> -->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="cardViewStyle">@style/cardViewStyle</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <!-- Card View Theme -->
+    <style name="cardViewStyle" parent="CardView">
+        <item name="android:background">@color/colorCard</item>
+        <item name="cardBackgroundColor">@color/colorCard</item>
+        <item name="cardCornerRadius">@dimen/card_recycler_corner_radius</item>
+        <item name="cardElevation">@dimen/card_recycler_elevation</item>
+    </style>
+
+    <!-- Card View Theme -->
+    <style name="cardViewStyleAccented" parent="cardViewStyle">
+        <item name="android:backgroundTint">@color/colorAccent</item>
+    </style>
+
+    <!-- Image View Theme -->
+    <style name="imageViewStyle">
+        <item name="android:background">@color/colorImage</item>
+    </style>
+
+    <!-- Button Theme -->
+    <style name="buttonStyle">
+        <item name="android:backgroundTint">@color/colorButton</item>
+    </style>
+
+    <!-- Edit Text Theme -->
+    <style name="editTextStyle">
+        <item name="android:backgroundTint">@color/colorButton</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="accountConfigurationEditTextStyle" parent="@style/editTextStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Text View Theme -->
+    <style name="textViewTitleStyle" parent="@style/TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="textViewSimpleStyle" parent="@style/TextAppearance.AppCompat.Large">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">11dp</item>
+    </style>
+
+    <style name="textViewScheduleItemStyle" parent="@style/TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">11dp</item>
+    </style>
+
+    <style name="textViewScheduleItemTitleStyle" parent="@style/textViewScheduleItemStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">11dp</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
