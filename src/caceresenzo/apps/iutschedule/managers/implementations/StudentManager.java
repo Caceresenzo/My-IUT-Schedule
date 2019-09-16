@@ -69,7 +69,7 @@ public class StudentManager extends AbstractManager {
 			
 			return false;
 		}
-
+		
 		return true;
 	}
 	

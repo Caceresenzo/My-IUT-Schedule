@@ -11,6 +11,7 @@
     <!-- <color name="colorError">#f44336</color> -->
 
     <color name="colorPrimary">#E72063</color>
+    <color name="colorPrimaryDark">#8B123B</color>
     <color name="colorAccent">#F2B43B</color>
     <color name="colorBackground">#F1F5F8</color>
     <color name="colorPanel">#F1F5F8</color>

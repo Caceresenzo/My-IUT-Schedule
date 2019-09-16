@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  -->
+    <string-array name="pref_main_time_iteration_relay_display">
+        <item>Disable service</item>
+        <item>Every 30 seconds (not recommended)</item>
+        <item>Every minute (recommended)</item>
+        <item>Every 5 minutes</item>
+        <item>Every 10 minutes</item>
+        <item>Every 20 minutes</item>
+    </string-array>
+    <string-array name="pref_main_time_iteration_relay_values">
+        <item>0</item>
+        <item>30</item>
+        <item>60</item>
+        <item>300</item>
+        <item>600</item>
+        <item>1200</item>
+    </string-array>
+
+    <!--  -->
+    <string-array name="pref_main_time_refresh_relay_display">
+        <item>Disable automatic refresh</item>
+        <item>Every iteration (not recommended)</item>
+        <item>Every 10 iterations (recommended)</item>
+        <item>Every 20 iterations</item>
+        <item>Every 50 iterations</item>
+        <item>Every 100 iterations</item>
+    </string-array>
+    <string-array name="pref_main_time_refresh_relay_values">
+        <item>0</item>
+        <item>1</item>
+        <item>10</item>
+        <item>20</item>
+        <item>50</item>
+        <item>100</item>
+    </string-array>
+
+</resources>

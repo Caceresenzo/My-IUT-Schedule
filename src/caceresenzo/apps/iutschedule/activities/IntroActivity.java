@@ -56,17 +56,19 @@ public class IntroActivity extends MaterialIntroActivity {
 	
 	@Override
 	public void onBackPressed() {
-		try {
-			Field viewPagerField = getClass().getSuperclass().getDeclaredField("viewPager");
-			viewPagerField.setAccessible(true);
-			
-			SwipeableViewPager viewPager = (SwipeableViewPager) viewPagerField.get(this);
-			
-			if (viewPager.getCurrentItem() == 0) {
-				return;
+		if (!StudentManager.get().isStudentSetup()) {
+			try {
+				Field viewPagerField = getClass().getSuperclass().getDeclaredField("viewPager");
+				viewPagerField.setAccessible(true);
+				
+				SwipeableViewPager viewPager = (SwipeableViewPager) viewPagerField.get(this);
+				
+				if (viewPager.getCurrentItem() == 0) {
+					return;
+				}
+			} catch (Exception exception) {
+				Log.i(TAG, "Failed to extract adapter field", exception);
 			}
-		} catch (Exception exception) {
-			Log.i(TAG, "Failed to extract adapter field", exception);
 		}
 		
 		super.onBackPressed();

@@ -40,6 +40,9 @@
             android:name=".activities.IntroActivity"
             android:theme="@style/Theme.Intro" />
         <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/activity_settings" />
+        <activity
             android:name=".activities.ScheduleItemDetailActivity"
             android:label="@string/activity_schedule_item_detail"
             android:parentActivityName=".activities.MainActivity" >

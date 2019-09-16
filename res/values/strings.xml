@@ -53,7 +53,7 @@
     <string name="error_no_calendar">No Calendar.</string>
     <string name="error_no_next_event">No Remaining Event.</string>
     <string name="error_failed_to_download_calendar">Failed to download calendar.\n%s</string>
-    
+
     <!--  -->
     <string name="time_range_tomorow">tomorrow</string>
     <string name="time_range_in_days_format">in %s days</string>
@@ -62,10 +62,30 @@
     <string name="day_of_week_date_format">EEEE, MMM dd, yyyy</string>
     <string name="week_day_date_format">M/d</string>
 
-    <!-- About -->
+    <!-- Preferences -->
+    <string name="pref_main_general_cagetory">General</string>
+    <!--  -->
+    <string name="pref_main_general_reset_key">reset</string>
+    <string name="pref_main_general_reset_title">Reset</string>
+    <string name="pref_main_general_reset_summary">Lunch the setup screen again to change user.</string>
+    <!--  -->
+    <string name="pref_main_time_cagetory">Time</string>
+    <!--  -->
+    <string name="pref_main_time_iteration_relay_key">iteration_delay</string>
+    <string name="pref_main_time_iteration_relay_default">60</string>
+    <string name="pref_main_time_iteration_relay_title">Iteration Delay</string>
+    <string name="pref_main_time_iteration_relay_summary">%s, is how much time is being wait between two service update, and so, notification update.</string>
+    <string name="pref_main_time_iteration_relay_summary_disabled">Feature disabled, the backgroud service will not be used.</string>
+    <!--  -->
+    <string name="pref_main_time_refresh_relay_key">refresh_delay</string>
+    <string name="pref_main_time_refresh_relay_default">10</string>
+    <string name="pref_main_time_refresh_relay_title">Automatic Refresh Delay</string>
+    <string name="pref_main_time_refresh_relay_summary">%s, is how much iteration has to be done before trying to refresh the calendar.</string>
+    <string name="pref_main_time_refresh_relay_summary_disabled">Feature disabled, the calendar will not be automatically refresh.</string>
 
+    <!-- About -->
     <string name="about">About</string>
-    <!-- Starting - About -->
+    <!--  -->
     <string name="about_application">Application</string>
     <string name="about_application_author">by @Caceresenzo</string>
     <string name="about_application_github">See the GitHub</string>
@@ -87,6 +107,7 @@
 
     <!-- Activities -->
     <string name="activity_about">@string/about</string>
+    <string name="activity_settings">Settings</string>
     <string name="activity_schedule_item_detail">Schedule Item Detail</string>
 
 </resources>

@@ -3,8 +3,10 @@ package caceresenzo.apps.iutschedule.application;
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import caceresenzo.android.libs.uncaughtexceptionhandler.AndroidUncaughtExceptionHandler;
 import caceresenzo.apps.iutschedule.activities.MainActivity;
 import caceresenzo.apps.iutschedule.managers.ScheduleManager;
@@ -24,11 +26,15 @@ public class ScheduleApplication extends Application {
 	/* Managers */
 	private Handler handler;
 	
+	/* Preferences */
+	private SharedPreferences sharedPreferences;
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		
 		INSTANCE = this;
+		
+		this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 		
 		handler = new Handler();
 		
@@ -76,9 +82,14 @@ public class ScheduleApplication extends Application {
 		System.exit(0);
 	}
 	
-	/** @return Application main {@link Handler handler}. */
+	/** @return Application's main {@link Handler handler}. */
 	public Handler getHandler() {
 		return handler;
+	}
+	
+	/** @return Application's main {@link SharedPreferences preferences}. */
+	public SharedPreferences getSharedPreferences() {
+		return sharedPreferences;
 	}
 	
 	/** @return ScheduleApplication's singleton instance. */

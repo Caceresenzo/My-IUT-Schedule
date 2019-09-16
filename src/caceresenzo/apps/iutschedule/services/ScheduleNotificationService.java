@@ -30,6 +30,7 @@ import caceresenzo.apps.iutschedule.managers.implementations.VirtualCalendarMana
 import caceresenzo.apps.iutschedule.utils.NotificationUtils;
 import caceresenzo.libs.iutschedule.calendar.VirtualCalendar;
 import caceresenzo.libs.iutschedule.calendar.VirtualCalendarEvent;
+import caceresenzo.libs.parse.ParseUtils;
 
 public class ScheduleNotificationService extends Service {
 	
@@ -47,7 +48,6 @@ public class ScheduleNotificationService extends Service {
 	
 	/* Timer */
 	private Timer timer;
-	private TimerTask timerTask;
 	
 	/* Variables */
 	public int serviceIteration;
@@ -55,19 +55,6 @@ public class ScheduleNotificationService extends Service {
 	/* Constructor */
 	public ScheduleNotificationService() {
 		super();
-		
-		this.timer = new Timer();
-		this.timerTask = new TimerTask() {
-			public void run() {
-				Log.i(TAG, "Service Iteration: " + serviceIteration++);
-				
-				if (serviceIteration % 10 == 0) {
-					VirtualCalendarManager.get().refreshCalendar();
-				}
-				
-				updateNotification();
-			}
-		};
 	}
 	
 	@Override
@@ -267,6 +254,7 @@ public class ScheduleNotificationService extends Service {
 		notificationManager.notify(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE, notification);
 	}
 	
+	/** Remove all {@link Notification notification} created by the service. */
 	public void clearNotification() {
 		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		notificationManager.cancel(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE);
@@ -274,19 +262,96 @@ public class ScheduleNotificationService extends Service {
 	
 	/** Execute service's tasks. */
 	private void execute() {
-		timer.schedule(timerTask, 0, 1000 * 60);
-		// timer.schedule(timerTask, 0, 1000);
+		startTimer();
+	}
+	
+	/**
+	 * Fully restart the timer.
+	 * 
+	 * @see #stopTimer()
+	 * @see #startTimer()
+	 */
+	public void restartTimer() {
+		stopTimer();
+		startTimer();
+	}
+	
+	/** Stop the {@link Timer timer} and set its variable to <code>null</code>. */
+	public void stopTimer() {
+		if (timer != null) {
+			timer.cancel();
+			timer.purge();
+		}
+		
+		timer = null;
+	}
+	
+	/**
+	 * Start the {@link Timer timer} with a new {@link TimerTask task} instance.<br>
+	 * It will not be lunched if the iteration delay is 0.
+	 * 
+	 * @see #getIterationDelay()
+	 */
+	public void startTimer() {
+		int delay = getIterationDelay();
+		
+		if (delay == 0) {
+			stopIfNotAlready(this);
+		} else {
+			serviceIteration = 0;
+			
+			timer = new Timer();
+			timer.schedule(new TimerTask() {
+				public void run() {
+					Log.i(TAG, "Service Iteration: " + serviceIteration++);
+					
+					int delay = getRefreshDelay();
+					
+					if (delay != 0 && serviceIteration % delay == 0) {
+						VirtualCalendarManager.get().refreshCalendar();
+					}
+					
+					updateNotification();
+				}
+			}, 0, 1000 * getIterationDelay());
+		}
 	}
 	
 	/** End service's tasks. */
 	private void destroy() {
-		timer.cancel();
+		stopTimer();
 		clearNotification();
 	}
 	
 	/** Notify the service of a new calendar. */
 	public void notifyNewCalendar() {
 		updateNotification();
+	}
+	
+	/**
+	 * Get iteration delay from preferences.<br>
+	 * The default value is <code>60</code> in case of an error.
+	 * 
+	 * @return The service's iteration delay.
+	 */
+	private int getIterationDelay() {
+		String defaultValue = getString(R.string.pref_main_time_iteration_relay_default);
+		String rawValue = ScheduleApplication.get().getSharedPreferences().getString(getString(R.string.pref_main_time_iteration_relay_key), defaultValue);
+		
+		return ParseUtils.parseInt(rawValue, 60);
+	}
+	
+	/**
+	 * Get refresh delay from preferences.<br>
+	 * The default value is <code>10</code> in case of an error.
+	 * 
+	 * @return Numbre of iteration needed to refresh the calendar.
+	 */
+	private int getRefreshDelay() {
+		String defaultValue = getString(R.string.pref_main_time_refresh_relay_default);
+		String rawValue = ScheduleApplication.get().getSharedPreferences().getString(getString(R.string.pref_main_time_refresh_relay_key), defaultValue);
+		
+		return ParseUtils.parseInt(rawValue, 10);
 	}
 	
 	/**

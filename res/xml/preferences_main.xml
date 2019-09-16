@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_main_general_cagetory" >
+        <Preference
+            android:key="@string/pref_main_general_reset_key"
+            android:summary="@string/pref_main_general_reset_summary"
+            android:title="@string/pref_main_general_reset_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_main_time_cagetory" >
+        <ListPreference
+            android:entries="@array/pref_main_time_iteration_relay_display"
+            android:defaultValue="@string/pref_main_time_iteration_relay_default"
+            android:entryValues="@array/pref_main_time_iteration_relay_values"
+            android:key="@string/pref_main_time_iteration_relay_key"
+            android:title="@string/pref_main_time_iteration_relay_title" />
+        <ListPreference
+            android:entries="@array/pref_main_time_refresh_relay_display"
+            android:defaultValue="@string/pref_main_time_refresh_relay_default"
+            android:entryValues="@array/pref_main_time_refresh_relay_values"
+            android:key="@string/pref_main_time_refresh_relay_key"
+            android:title="@string/pref_main_time_refresh_relay_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
