@@ -4,6 +4,10 @@
     <string name="application_name">Mon Emploi du Temps d\'IUT</string>
 
     <!--  -->
+    <string name="notification_channel_next_event_title">Prochain Évenement</string>
+    <string name="notification_channel_next_event_description">Affiche le prochain événement de ton emploi du temps.</string>
+
+    <!--  -->
     <string name="intro_welcome_title">Bienvenue</string>
     <string name="intro_welcome_description">sur ton nouvel emploi du temps</string>
     <string name="intro_source_public_title">Code Source Public</string>

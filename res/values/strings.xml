@@ -8,6 +8,10 @@
     <string name="author_github">https://github.com/Caceresenzo</string>
 
     <!--  -->
+    <string name="notification_channel_next_event_title">Next Event</string>
+    <string name="notification_channel_next_event_description">Display the next event on your schedule.</string>
+
+    <!--  -->
     <string name="intro_welcome_title">Welcome</string>
     <string name="intro_welcome_description">on your new scheduler</string>
     <string name="intro_source_public_title">Public Source Code</string>

@@ -3,7 +3,7 @@ package caceresenzo.apps.iutschedule.application;
 public class Constants {
 	
 	public interface NOTIFICATION_CHANNEL {
-		public static final String SCHEDULE = "schedule_notification";
+		public static final String NEXT_EVENT = "next_event";
 	}
 	
 	public interface NOTIFICATION_ID {

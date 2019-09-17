@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import caceresenzo.android.libs.uncaughtexceptionhandler.AndroidUncaughtExceptionHandler;
+import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.activities.MainActivity;
 import caceresenzo.apps.iutschedule.managers.ScheduleManager;
 import caceresenzo.apps.iutschedule.services.ScheduleNotificationService;
@@ -57,16 +58,16 @@ public class ScheduleApplication extends Application {
 			NotificationManager notificationManager = getSystemService(NotificationManager.class);
 			
 			if (BUILD_DEBUG) {
-				for (String channel : new String[] { Constants.NOTIFICATION_CHANNEL.SCHEDULE }) {
+				for (String channel : new String[] { Constants.NOTIFICATION_CHANNEL.NEXT_EVENT }) {
 					if (notificationManager.getNotificationChannel(channel) != null) {
 						notificationManager.deleteNotificationChannel(channel);
 					}
 				}
 			}
 			
-			if (notificationManager.getNotificationChannel(Constants.NOTIFICATION_CHANNEL.SCHEDULE) == null) {
-				NotificationChannel mainChannel = new NotificationChannel(Constants.NOTIFICATION_CHANNEL.SCHEDULE, "xx_ Schedule Notification", NotificationManager.IMPORTANCE_DEFAULT);
-				mainChannel.setDescription("xx_ Display current and next item on the schedule.");
+			if (notificationManager.getNotificationChannel(Constants.NOTIFICATION_CHANNEL.NEXT_EVENT) == null) {
+				NotificationChannel mainChannel = new NotificationChannel(Constants.NOTIFICATION_CHANNEL.NEXT_EVENT, getString(R.string.notification_channel_next_event_title), NotificationManager.IMPORTANCE_DEFAULT);
+				mainChannel.setDescription(getString(R.string.notification_channel_next_event_description));
 				mainChannel.setImportance(NotificationManager.IMPORTANCE_LOW);
 				
 				notificationManager.createNotificationChannel(mainChannel);
