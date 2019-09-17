@@ -34,7 +34,8 @@
         <activity
             android:name=".activities.AboutActivity"
             android:label="@string/activity_about"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppThemeInversed" >
         </activity>
         <activity
             android:name=".activities.IntroActivity"
@@ -45,7 +46,8 @@
         <activity
             android:name=".activities.ScheduleItemDetailActivity"
             android:label="@string/activity_schedule_item_detail"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppThemeInversed" >
         </activity>
 
         <service
