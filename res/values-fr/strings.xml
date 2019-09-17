@@ -91,13 +91,6 @@
     <string name="about_author_github">Voir mon Github</string>
     <string name="about_author_website">Voir mon site web</string>
     <string name="about_author_email">M\'envoyer un email</string>
-    <!--  -->
-    <string name="about_team">Équipe</string>
-    <!--  -->
-    <string name="about_team_format_type_application">Application</string>
-    <string name="about_team_format_type_ui">Interface</string>
-    <string name="about_team_format_type_ui_design">Design de l\'Interface</string>
-    <string name="about_team_format_separator">,%s</string>
 
     <!-- Activities -->
     <string name="activity_settings">Paramètres</string>

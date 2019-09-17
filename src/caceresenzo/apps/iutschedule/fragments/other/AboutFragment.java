@@ -46,33 +46,6 @@ public class AboutFragment extends EasyAboutFragment {
 						.setTitle(R.string.about_description_text)
 						.build())
 				.build());
-		
-		String separator = getString(R.string.about_team_format_separator, " ");
-		String typeApplication = getString(R.string.about_team_format_type_application);
-		String typeUi = getString(R.string.about_team_format_type_ui);
-		String typeUiDesign = getString(R.string.about_team_format_type_ui_design);
-		
-		addCard(new AboutCard.Builder(context)
-				.setTitle(R.string.about_team)
-				.addItem(AboutItemBuilder.generatePersonaLinkItem(context, "https://github.com/Caceresenzo")
-						.setTitle("@Caceresenzo")
-						.setSubtitle(new StringBuilder()
-								.append(typeApplication)
-								.append(separator)
-								.append(typeUi)
-								.append(separator)
-								.append(typeUiDesign)
-								.toString())
-						.setIcon(R.drawable.profile_caceresenzo)
-						.build())
-				.addItem(AboutItemBuilder.generatePersonaLinkItem(context, "https://github.com/thegostisdead")
-						.setTitle("@thegostisdead")
-						.setSubtitle(new StringBuilder()
-								.append(typeUiDesign)
-								.toString())
-						.setIcon(R.drawable.profile_thegostisdead)
-						.build())
-				.build());
 	}
 	
 }

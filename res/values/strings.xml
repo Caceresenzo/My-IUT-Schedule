@@ -101,13 +101,6 @@
     <string name="about_author_github">See my Github</string>
     <string name="about_author_website">Visit my website</string>
     <string name="about_author_email">Send me an email</string>
-    <!--  -->
-    <string name="about_team">Team</string>
-    <!--  -->
-    <string name="about_team_format_type_application">Application</string>
-    <string name="about_team_format_type_ui">UI</string>
-    <string name="about_team_format_type_ui_design">UI Design</string>
-    <string name="about_team_format_separator">,%s</string>
 
     <!-- Activities -->
     <string name="activity_about">@string/about</string>
