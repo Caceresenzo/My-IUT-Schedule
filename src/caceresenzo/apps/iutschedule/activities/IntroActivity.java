@@ -18,6 +18,9 @@ import caceresenzo.apps.iutschedule.managers.implementations.StudentManager;;
 
 public class IntroActivity extends MaterialIntroActivity {
 	
+	/* Bundle Keys */
+	public static final String BUNDLE_KEY_ONLY_ACCOUNT = "only_account";
+	
 	/* Tag */
 	public static final String TAG = IntroActivity.class.getSimpleName();
 	
@@ -25,23 +28,27 @@ public class IntroActivity extends MaterialIntroActivity {
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		addSlide(new SlideFragmentBuilder()
-				.backgroundColor(R.color.colorPrimary)
-				.buttonsColor(R.color.colorAccent)
-				.image(R.mipmap.icon_launcher_round)
-				.title(getString(R.string.intro_welcome_title))
-				.description(getString(R.string.intro_welcome_description))
-				.build());
+		boolean onlyAccount = getIntent().getExtras().getBoolean(BUNDLE_KEY_ONLY_ACCOUNT, false);
 		
-		addSlide(new SlideFragmentBuilder()
-				.backgroundColor(R.color.colorPrimary)
-				.buttonsColor(R.color.colorAccent)
-				.image(R.drawable.icon_github_circle_white_24dp)
-				.title(getString(R.string.intro_source_public_title))
-				.description(getString(R.string.intro_source_public_description))
-				.build());
-		
-		addSlide(new SchoolIntroSlide());
+		if (!onlyAccount) {
+			addSlide(new SlideFragmentBuilder()
+					.backgroundColor(R.color.colorPrimary)
+					.buttonsColor(R.color.colorAccent)
+					.image(R.mipmap.icon_launcher_round)
+					.title(getString(R.string.intro_welcome_title))
+					.description(getString(R.string.intro_welcome_description))
+					.build());
+			
+			addSlide(new SlideFragmentBuilder()
+					.backgroundColor(R.color.colorPrimary)
+					.buttonsColor(R.color.colorAccent)
+					.image(R.drawable.icon_github_circle_white_24dp)
+					.title(getString(R.string.intro_source_public_title))
+					.description(getString(R.string.intro_source_public_description))
+					.build());
+			
+			addSlide(new SchoolIntroSlide());
+		}
 		
 		addSlide(new AccountConfigurationIntroSlide());
 		
@@ -84,11 +91,12 @@ public class IntroActivity extends MaterialIntroActivity {
 	}
 	
 	/** Quickly start an {@link IntroActivity}. */
-	public static void start() {
+	public static void start(boolean onlyAccount) {
 		ScheduleApplication application = ScheduleApplication.get();
 		
 		Intent intent = new Intent(application, IntroActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra(BUNDLE_KEY_ONLY_ACCOUNT, onlyAccount);
 		
 		application.startActivity(intent);
 	}

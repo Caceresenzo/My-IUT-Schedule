@@ -37,7 +37,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements Sha
 		findPreference(getString(R.string.pref_main_general_reset_key)).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
-				IntroActivity.start();
+				IntroActivity.start(true);
 				return false;
 			}
 		});

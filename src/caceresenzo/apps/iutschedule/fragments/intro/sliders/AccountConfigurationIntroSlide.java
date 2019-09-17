@@ -1,5 +1,7 @@
 package caceresenzo.apps.iutschedule.fragments.intro.sliders;
 
+import java.security.PublicKey;
+
 import agency.tango.materialintroscreen.SlideFragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -53,6 +55,10 @@ public class AccountConfigurationIntroSlide extends SlideFragment implements OnN
 				doCheck();
 			}
 		});
+		
+		if (StudentManager.get().isStudentSetup()) {
+			publishCurrentCalendar();
+		}
 		
 		return view;
 	}
@@ -148,6 +154,11 @@ public class AccountConfigurationIntroSlide extends SlideFragment implements OnN
 	public void onNewCalendar() {
 		enableInputs(true);
 		
+		publishCurrentCalendar();
+	}
+	
+	/** Publish the valid state with the current calendar. */
+	private void publishCurrentCalendar() {
 		publishState(R.string.intro_account_state_valid, VirtualCalendarManager.get().getCurrentVirtualCalendar().getName());
 	}
 	

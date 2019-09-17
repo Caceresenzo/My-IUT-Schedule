@@ -65,7 +65,7 @@ public class StudentManager extends AbstractManager {
 	 */
 	public boolean validateSetup() {
 		if (!isStudentSetup()) {
-			IntroActivity.start();
+			IntroActivity.start(false);
 			
 			return false;
 		}
