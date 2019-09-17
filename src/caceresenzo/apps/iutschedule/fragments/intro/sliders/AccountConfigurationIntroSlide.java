@@ -1,7 +1,5 @@
 package caceresenzo.apps.iutschedule.fragments.intro.sliders;
 
-import java.security.PublicKey;
-
 import agency.tango.materialintroscreen.SlideFragment;
 import android.content.Context;
 import android.os.Bundle;
