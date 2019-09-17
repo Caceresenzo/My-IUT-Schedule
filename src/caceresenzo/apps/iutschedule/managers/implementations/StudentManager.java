@@ -48,7 +48,7 @@ public class StudentManager extends AbstractManager {
 		
 		loadStudents();
 		
-		if (validateSetup()) {
+		if (isStudentSetup()) {
 			selectStudent(selectedStudent);
 		}
 	}

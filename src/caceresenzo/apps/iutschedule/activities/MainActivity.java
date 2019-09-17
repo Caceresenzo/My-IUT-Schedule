@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.fragments.schedule.ScheduleFragment;
+import caceresenzo.apps.iutschedule.managers.implementations.StudentManager;
 
 public class MainActivity extends AppCompatActivity {
 	
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 		INSTANCE = this;
 		
 		initializeViews();
+		
+		StudentManager.get().validateSetup();
 	}
 	
 	@Override
