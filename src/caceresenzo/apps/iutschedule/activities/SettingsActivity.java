@@ -24,6 +24,8 @@ public class SettingsActivity extends AppCompatActivity {
 		Toolbar toolbar = findViewById(R.id.activity_settings_toolbar_bar);
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setElevation(0);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setTitle(R.string.activity_settings);
 		
 		getSupportFragmentManager()
 				.beginTransaction()
