@@ -11,14 +11,14 @@ import android.widget.Toast;
 import caceresenzo.android.libs.internet.NetworkUtils;
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
+import caceresenzo.apps.iutschedule.calendar.parser.VirtualCalendarRemoteParser;
 import caceresenzo.apps.iutschedule.fragments.intro.sliders.AccountConfigurationIntroSlide;
 import caceresenzo.apps.iutschedule.fragments.schedule.ScheduleFragment;
 import caceresenzo.apps.iutschedule.managers.AbstractManager;
 import caceresenzo.apps.iutschedule.models.Student;
 import caceresenzo.apps.iutschedule.services.ScheduleNotificationService;
 import caceresenzo.apps.iutschedule.utils.AsyncTaskResult;
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendar;
-import caceresenzo.libs.iutschedule.calendar.parser.VirtualCalendarRemoteParser;
 
 public class VirtualCalendarManager extends AbstractManager {
 	

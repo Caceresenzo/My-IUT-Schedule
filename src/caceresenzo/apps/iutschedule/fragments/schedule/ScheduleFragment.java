@@ -24,13 +24,13 @@ import android.widget.Toast;
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.activities.MainActivity;
 import caceresenzo.apps.iutschedule.activities.ScheduleItemDetailActivity;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendarEvent;
 import caceresenzo.apps.iutschedule.fragments.BaseFragment;
 import caceresenzo.apps.iutschedule.managers.implementations.EventColorManager;
 import caceresenzo.apps.iutschedule.managers.implementations.VirtualCalendarManager;
 import caceresenzo.apps.iutschedule.utils.listeners.OnCalendarDownloadListener;
 import caceresenzo.apps.iutschedule.utils.listeners.OnNewCalendarListener;
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendar;
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendarEvent;
 
 public class ScheduleFragment extends BaseFragment implements OnNewCalendarListener, OnCalendarDownloadListener, WeekView.EventClickListener, MonthLoader.MonthChangeListener {
 	

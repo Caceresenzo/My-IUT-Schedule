@@ -1,6 +1,6 @@
 package caceresenzo.apps.iutschedule.utils.listeners;
 
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendar;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
 
 public interface OnNewCalendarListener {
 	

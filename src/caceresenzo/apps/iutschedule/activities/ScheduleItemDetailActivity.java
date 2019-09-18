@@ -25,7 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendarEvent;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendarEvent;
 import caceresenzo.libs.string.StringUtils;
 
 public class ScheduleItemDetailActivity extends AppCompatActivity {

@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import android.graphics.Color;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendarEvent;
 import caceresenzo.apps.iutschedule.managers.AbstractManager;
 import caceresenzo.apps.iutschedule.utils.listeners.OnNewCalendarListener;
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendar;
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendarEvent;
 import caceresenzo.libs.list.ListUtils;
 
 public class EventColorManager extends AbstractManager implements OnNewCalendarListener {

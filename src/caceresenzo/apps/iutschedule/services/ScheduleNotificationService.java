@@ -24,12 +24,12 @@ import caceresenzo.apps.iutschedule.activities.MainActivity;
 import caceresenzo.apps.iutschedule.activities.ScheduleItemDetailActivity;
 import caceresenzo.apps.iutschedule.application.Constants;
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendarEvent;
 import caceresenzo.apps.iutschedule.managers.ScheduleManager;
 import caceresenzo.apps.iutschedule.managers.implementations.EventColorManager;
 import caceresenzo.apps.iutschedule.managers.implementations.VirtualCalendarManager;
 import caceresenzo.apps.iutschedule.utils.NotificationUtils;
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendar;
-import caceresenzo.libs.iutschedule.calendar.VirtualCalendarEvent;
 import caceresenzo.libs.parse.ParseUtils;
 
 public class ScheduleNotificationService extends Service {
