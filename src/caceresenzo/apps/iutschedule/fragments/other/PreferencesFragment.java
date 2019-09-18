@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceScreen;
+
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.activities.IntroActivity;
 import caceresenzo.apps.iutschedule.services.ScheduleNotificationService;
@@ -91,6 +93,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements Sha
 					
 				}
 				preference.setSummary(summary);
+			}
+		}
+	}
+
+	@Override
+	public void setPreferenceScreen(PreferenceScreen preferenceScreen) {
+		super.setPreferenceScreen(preferenceScreen);
+
+		if (preferenceScreen != null) {
+			int count = preferenceScreen.getPreferenceCount();
+
+			for (int index = 0; index < count; index++) {
+				preferenceScreen.getPreference(index).setIconSpaceReserved(false);
 			}
 		}
 	}

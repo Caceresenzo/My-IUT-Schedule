@@ -24,6 +24,7 @@ import android.widget.Toast;
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.activities.MainActivity;
 import caceresenzo.apps.iutschedule.activities.ScheduleItemDetailActivity;
+import caceresenzo.apps.iutschedule.application.ScheduleApplication;
 import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
 import caceresenzo.apps.iutschedule.calendar.VirtualCalendarEvent;
 import caceresenzo.apps.iutschedule.fragments.BaseFragment;
@@ -76,8 +77,14 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 		
 		this.weekView.setOnEventClickListener(this);
 		this.weekView.setMonthChangeListener(this);
-		this.weekView.goToToday();
-		this.weekView.goToHour(7);
+
+		ScheduleApplication.get().getHandler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				weekView.goToToday();
+				weekView.goToHour(7);
+			}
+		}, 150);
 		
 		changeWeekViewType(WEEK_VIEW_TYPE_WEEK_VIEW, null);
 		setupDateTimeInterpreter(true);
