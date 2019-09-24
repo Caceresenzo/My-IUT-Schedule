@@ -12,6 +12,7 @@ import caceresenzo.android.libs.internet.NetworkUtils;
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
 import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
+import caceresenzo.apps.iutschedule.calendar.VirtualCalendarEvent;
 import caceresenzo.apps.iutschedule.calendar.parser.VirtualCalendarRemoteParser;
 import caceresenzo.apps.iutschedule.fragments.intro.sliders.AccountConfigurationIntroSlide;
 import caceresenzo.apps.iutschedule.fragments.schedule.ScheduleFragment;
@@ -93,7 +94,7 @@ public class VirtualCalendarManager extends AbstractManager {
 					String errorMessage = application.getString(R.string.error_failed_to_download_calendar, result.getException().getMessage());
 					
 					Toast.makeText(ScheduleApplication.get(), errorMessage, Toast.LENGTH_LONG).show();
-
+					
 					if (ScheduleFragment.get() != null) {
 						ScheduleFragment.get().onCalendarDownloadFailed();
 					}
@@ -140,10 +141,13 @@ public class VirtualCalendarManager extends AbstractManager {
 	 *            The month.
 	 * @return True if the event matches the year and month.
 	 */
-	public static boolean eventMatches(WeekViewEvent event, int year, int month) {
-		return (event.getStartTime().get(Calendar.YEAR) == year && event.getStartTime().get(Calendar.MONTH) == month - 1) || (event.getEndTime().get(Calendar.YEAR) == year && event.getEndTime().get(Calendar.MONTH) == month - 1);
+	public static boolean eventMatches(VirtualCalendarEvent event, int year, int month) {
+		Calendar startTime = event.getStart().toCalendar();
+		Calendar endTime = event.getEnd().toCalendar();
+
+		return (startTime.get(Calendar.YEAR) == year && startTime.get(Calendar.MONTH) == month) || (endTime.get(Calendar.YEAR) == year && endTime.get(Calendar.MONTH) == month);
 	}
-	
+
 	/** @return VirtualCalendarManager's singleton instance. */
 	public static final VirtualCalendarManager get() {
 		if (INSTANCE == null) {

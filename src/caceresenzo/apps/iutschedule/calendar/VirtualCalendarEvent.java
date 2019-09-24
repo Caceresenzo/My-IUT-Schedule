@@ -2,14 +2,19 @@ package caceresenzo.apps.iutschedule.calendar;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 import java.util.TimeZone;
 import java.util.regex.Pattern;
 
+import com.alamkanak.weekview.WeekViewDisplayable;
+import com.alamkanak.weekview.WeekViewEvent;
+
+import caceresenzo.apps.iutschedule.managers.implementations.EventColorManager;
 import caceresenzo.apps.iutschedule.utils.IBuilder;
 
-public class VirtualCalendarEvent implements Serializable {
+public class VirtualCalendarEvent implements Serializable, WeekViewDisplayable<VirtualCalendarEvent> {
 	
 	/* Serializable */
 	private static final long serialVersionUID = 4667175564259328353L;
@@ -129,6 +134,22 @@ public class VirtualCalendarEvent implements Serializable {
 	/** @return Event's unique identifier. */
 	public String getUid() {
 		return uid;
+	}
+	
+	@Override
+	public WeekViewEvent<VirtualCalendarEvent> toWeekViewEvent() {		
+		return new WeekViewEvent<>(uid.hashCode(), summary, start.toCalendar(), end.toCalendar(),
+				location, EventColorManager.get().getEventColor(this), false, this);/*new WeekViewEvent.Builder<VirtualCalendarEvent>()
+				.setId(uid.hashCode())
+				.setTitle(summary)
+				.setLocation(location)
+				.setStartTime(start.toCalendar())
+				.setEndTime(end.toCalendar())
+				.setStyle(new WeekViewEvent.Style.Builder()
+						.setBackgroundColor(EventColorManager.get().getEventColor(this))
+						.build())
+				.setData(this)
+				.build();*/
 	}
 	
 	public static final class Builder implements IBuilder<VirtualCalendarEvent> {

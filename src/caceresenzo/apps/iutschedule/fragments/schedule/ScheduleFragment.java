@@ -10,17 +10,18 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import com.alamkanak.weekview.DateTimeInterpreter;
-import com.alamkanak.weekview.MonthLoader;
+import com.alamkanak.weekview.EventClickListener;
+import com.alamkanak.weekview.MonthChangeListener;
 import com.alamkanak.weekview.WeekView;
-import com.alamkanak.weekview.WeekViewEvent;
+import com.alamkanak.weekview.WeekViewDisplayable;
 
 import android.content.Context;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
-import android.widget.Toast;
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.activities.MainActivity;
 import caceresenzo.apps.iutschedule.activities.ScheduleItemDetailActivity;
@@ -33,7 +34,7 @@ import caceresenzo.apps.iutschedule.managers.implementations.VirtualCalendarMana
 import caceresenzo.apps.iutschedule.utils.listeners.OnCalendarDownloadListener;
 import caceresenzo.apps.iutschedule.utils.listeners.OnNewCalendarListener;
 
-public class ScheduleFragment extends BaseFragment implements OnNewCalendarListener, OnCalendarDownloadListener, WeekView.EventClickListener, MonthLoader.MonthChangeListener {
+public class ScheduleFragment extends BaseFragment implements OnNewCalendarListener, OnCalendarDownloadListener, EventClickListener<VirtualCalendarEvent>, MonthChangeListener<VirtualCalendarEvent> {
 	
 	/* Tag */
 	public static final String TAG = ScheduleFragment.class.getSimpleName();
@@ -48,10 +49,10 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 	
 	/* Views */
 	private SwipeRefreshLayout swipeRefreshLayout;
-	private WeekView weekView;
+	private WeekView<VirtualCalendarEvent> weekView;
 	
 	/* Data */
-	private final List<WeekViewEvent> events;
+	private final List<VirtualCalendarEvent> events;
 	private int weekViewType;
 	
 	/* Constructor */
@@ -77,7 +78,7 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 		
 		this.weekView.setOnEventClickListener(this);
 		this.weekView.setMonthChangeListener(this);
-
+		
 		ScheduleApplication.get().getHandler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
@@ -150,22 +151,23 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 		VirtualCalendar calendar = VirtualCalendarManager.get().getCurrentVirtualCalendar();
 		
 		this.events.clear();
+		this.events.addAll(calendar.getEvents());
 		
-		for (VirtualCalendarEvent event : calendar.getEvents()) {
-			long id = event.getUid().hashCode();
-			String name = event.getSummary();
-			String location = event.getLocation();
-			Calendar startTime = event.getStart().toCalendar();
-			Calendar endTime = event.getEnd().toCalendar();
-			
-			WeekViewEvent weekViewEvent = new WeekViewEvent(id, name, location, startTime, endTime);
-			weekViewEvent.setColor(EventColorManager.get().getEventColor(event));
-			
-			events.add(weekViewEvent);
-		}
+		// for (VirtualCalendarEvent event : calendar.getEvents()) {
+		// long id = event.getUid().hashCode();
+		// String name = event.getSummary();
+		// String location = event.getLocation();
+		// Calendar startTime = event.getStart().toCalendar();
+		// Calendar endTime = event.getEnd().toCalendar();
+		//
+		// WeekViewEvent weekViewEvent = new WeekViewEvent(id, name, location, startTime, endTime);
+		// weekViewEvent.setColor(EventColorManager.get().getEventColor(event));
+		//
+		// events.add(weekViewEvent);
+		// }
 		
 		changeRefreshState(false);
-		weekView.notifyDatasetChanged();
+		weekView.notifyDataSetChanged();
 		
 		if (MainActivity.get() != null) {
 			MainActivity.get().getSupportActionBar().setTitle(calendar.getName());
@@ -202,14 +204,13 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 			item.setChecked(!item.isChecked());
 		}
 		
-		int numberOfVisibleDays, columnGap, textSize, eventTextSize;
+		int numberOfVisibleDays, columnGap, eventTextSize;
 		
 		switch (type) {
 			case WEEK_VIEW_TYPE_DAY_VIEW: {
 				numberOfVisibleDays = 1;
 				
 				columnGap = 8;
-				textSize = 12;
 				eventTextSize = 12;
 				break;
 			}
@@ -218,7 +219,6 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 				numberOfVisibleDays = 3;
 				
 				columnGap = 8;
-				textSize = 12;
 				eventTextSize = 12;
 				break;
 			}
@@ -227,7 +227,6 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 				numberOfVisibleDays = 7;
 				
 				columnGap = 2;
-				textSize = 10;
 				eventTextSize = 10;
 				break;
 			}
@@ -240,7 +239,6 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 		weekView.setNumberOfVisibleDays(numberOfVisibleDays);
 		
 		weekView.setColumnGap((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, columnGap, getResources().getDisplayMetrics()));
-		weekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, textSize, getResources().getDisplayMetrics()));
 		weekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, eventTextSize, getResources().getDisplayMetrics()));
 	}
 	
@@ -277,10 +275,15 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 	}
 	
 	@Override
-	public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-		List<WeekViewEvent> matchedEvents = new ArrayList<>();
+	public List<WeekViewDisplayable<VirtualCalendarEvent>> onMonthChange(Calendar startDate, Calendar endDate) {
+		int newYear = startDate.get(Calendar.YEAR);
+		int newMonth = startDate.get(Calendar.MONTH);
 		
-		for (WeekViewEvent event : events) {
+		Log.d(TAG, String.format("xx %s/%s  to    %s/%s", newYear, newMonth, endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH)));
+		
+		List<WeekViewDisplayable<VirtualCalendarEvent>> matchedEvents = new ArrayList<>();
+		
+		for (VirtualCalendarEvent event : events) {
 			if (VirtualCalendarManager.eventMatches(event, newYear, newMonth)) {
 				matchedEvents.add(event);
 			}
@@ -290,18 +293,8 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 	}
 	
 	@Override
-	public void onEventClick(WeekViewEvent weekViewEvent, RectF eventRect) {
-		VirtualCalendar calendar = VirtualCalendarManager.get().getCurrentVirtualCalendar();
-		
-		for (VirtualCalendarEvent event : calendar.getEvents()) {
-			if (weekViewEvent.getId() == event.getUid().hashCode()) {
-				ScheduleItemDetailActivity.start(event, weekViewEvent.getColor());
-				
-				return;
-			}
-		}
-		
-		Toast.makeText(application, "Error\nEvent with hash " + weekViewEvent.getId() + " not found.", Toast.LENGTH_SHORT).show();
+	public void onEventClick(VirtualCalendarEvent virtualCalendarEvent, RectF eventRect) {
+		ScheduleItemDetailActivity.start(virtualCalendarEvent, EventColorManager.get().getEventColor(virtualCalendarEvent));
 	}
 	
 	@Override
