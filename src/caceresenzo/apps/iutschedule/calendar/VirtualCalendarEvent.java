@@ -2,7 +2,6 @@ package caceresenzo.apps.iutschedule.calendar;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 import java.util.TimeZone;
@@ -138,8 +137,7 @@ public class VirtualCalendarEvent implements Serializable, WeekViewDisplayable<V
 	
 	@Override
 	public WeekViewEvent<VirtualCalendarEvent> toWeekViewEvent() {		
-		return new WeekViewEvent<>(uid.hashCode(), summary, start.toCalendar(), end.toCalendar(),
-				location, EventColorManager.get().getEventColor(this), false, this);/*new WeekViewEvent.Builder<VirtualCalendarEvent>()
+		return new WeekViewEvent.Builder<VirtualCalendarEvent>()
 				.setId(uid.hashCode())
 				.setTitle(summary)
 				.setLocation(location)
@@ -149,7 +147,7 @@ public class VirtualCalendarEvent implements Serializable, WeekViewDisplayable<V
 						.setBackgroundColor(EventColorManager.get().getEventColor(this))
 						.build())
 				.setData(this)
-				.build();*/
+				.build();
 	}
 	
 	public static final class Builder implements IBuilder<VirtualCalendarEvent> {

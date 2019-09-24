@@ -19,7 +19,6 @@ import android.content.Context;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import caceresenzo.apps.iutschedule.R;
@@ -153,19 +152,6 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 		this.events.clear();
 		this.events.addAll(calendar.getEvents());
 		
-		// for (VirtualCalendarEvent event : calendar.getEvents()) {
-		// long id = event.getUid().hashCode();
-		// String name = event.getSummary();
-		// String location = event.getLocation();
-		// Calendar startTime = event.getStart().toCalendar();
-		// Calendar endTime = event.getEnd().toCalendar();
-		//
-		// WeekViewEvent weekViewEvent = new WeekViewEvent(id, name, location, startTime, endTime);
-		// weekViewEvent.setColor(EventColorManager.get().getEventColor(event));
-		//
-		// events.add(weekViewEvent);
-		// }
-		
 		changeRefreshState(false);
 		weekView.notifyDataSetChanged();
 		
@@ -278,8 +264,6 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 	public List<WeekViewDisplayable<VirtualCalendarEvent>> onMonthChange(Calendar startDate, Calendar endDate) {
 		int newYear = startDate.get(Calendar.YEAR);
 		int newMonth = startDate.get(Calendar.MONTH);
-		
-		Log.d(TAG, String.format("xx %s/%s  to    %s/%s", newYear, newMonth, endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH)));
 		
 		List<WeekViewDisplayable<VirtualCalendarEvent>> matchedEvents = new ArrayList<>();
 		
