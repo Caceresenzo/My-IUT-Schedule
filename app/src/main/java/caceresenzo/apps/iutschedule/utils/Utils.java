@@ -8,8 +8,16 @@ import android.net.NetworkInfo;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.StringRes;
+
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Function;
+
+import caceresenzo.apps.iutschedule.R;
+import caceresenzo.apps.iutschedule.application.ScheduleApplication;
 
 public class Utils {
 
@@ -64,6 +72,19 @@ public class Utils {
         }
 
         return list.get(ThreadLocalRandom.current().nextInt(0, list.size() - 1));
+    }
+
+    public static <T> T fromConfig(@StringRes int keyId, @StringRes int defaultValueId, Function<String, T> convert, T absoluteDefault) {
+        Context context = ScheduleApplication.get();
+
+        String defaultValue = context.getString(defaultValueId);
+        String rawValue = String.valueOf(((Map<String, Object>) ScheduleApplication.get().getSharedPreferences().getAll()).getOrDefault(context.getString(keyId), defaultValue));
+
+        try {
+            return convert.apply(rawValue);
+        } catch (Exception exception) {
+            return absoluteDefault;
+        }
     }
 
 }

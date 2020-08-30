@@ -76,6 +76,16 @@
     <string name="pref_main_time_refresh_relay_title">Délai de Rafraichissement Automatique</string>
     <string name="pref_main_time_refresh_relay_summary">%s, est le nombre d\'itération du service qui doit être fait avant qu\'une tentative d\'actualisation du calendrier soit faite.</string>
     <string name="pref_main_time_refresh_relay_summary_disabled">Fonctionnalité désactivé, le calendrier ne sera jamais mis-à-jour automatiquement.</string>
+    <!--  -->
+    <string name="pref_main_logging_cagetory">Journalisation</string>
+    <!--  -->
+    <string name="pref_main_logging_service_start_stop_title">Démarrage/Arrêt du Service</string>
+    <string name="pref_main_logging_service_start_stop_summary_enabled">Soyez notifié(e) quand le service démarre ou s\'arrête.</string>
+    <string name="pref_main_logging_service_start_stop_summary_disabled">Ne soyez pas notifié(e) quand le service démarre ou s\'arrête</string>
+    <!--  -->
+    <string name="pref_main_logging_calendar_download_fail_title">Échec du téléchargement du calendrier</string>
+    <string name="pref_main_logging_calendar_download_fail_summary_enabled">Soyez notifié(e) quand le calendrier ne se télécharge pas correctement.</string>
+    <string name="pref_main_logging_calendar_download_fail_summary_disabled">Ne soyez pas notifié(e) quand le calendrier ne se télécharge pas correctement.</string>
 
     <!-- About -->
     <string name="about">A propos</string>

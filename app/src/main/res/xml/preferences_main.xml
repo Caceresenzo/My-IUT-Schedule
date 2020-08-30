@@ -24,5 +24,19 @@
             android:key="@string/pref_main_time_refresh_relay_key"
             android:title="@string/pref_main_time_refresh_relay_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_main_logging_cagetory">
+        <SwitchPreference
+            android:defaultValue="@string/pref_main_logging_service_start_stop_default"
+            android:key="@string/pref_main_logging_service_start_stop_key"
+            android:title="@string/pref_main_logging_service_start_stop_title"
+            android:summary="@string/pref_main_logging_service_start_stop_summary_enabled"
+            android:summaryOff="@string/pref_main_logging_service_start_stop_summary_disabled" />
+        <SwitchPreference
+            android:defaultValue="@string/pref_main_logging_calendar_download_fail_default"
+            android:key="@string/pref_main_logging_calendar_download_fail_key"
+            android:title="@string/pref_main_logging_calendar_download_fail_title"
+            android:summary="@string/pref_main_logging_calendar_download_fail_summary_enabled"
+            android:summaryOff="@string/pref_main_logging_calendar_download_fail_summary_disabled" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

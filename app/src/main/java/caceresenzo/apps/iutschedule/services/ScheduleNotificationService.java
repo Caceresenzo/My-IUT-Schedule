@@ -73,16 +73,20 @@ public class ScheduleNotificationService extends Service {
 			switch (action) {
 				case ACTION_START_FOREGROUND_SERVICE: {
 					startForegroundService();
-					
-					Toast.makeText(getApplicationContext(), R.string.service_started, Toast.LENGTH_LONG).show();
+
+					if (isServiceStartStopLoggingEnabled()) {
+						Toast.makeText(getApplicationContext(), R.string.service_started, Toast.LENGTH_LONG).show();
+					}
 					break;
 				}
 				
 				case ACTION_STOP:
 				case ACTION_STOP_FOREGROUND_SERVICE: {
 					stopForegroundService();
-					
-					Toast.makeText(getApplicationContext(), getString(R.string.service_stopped), Toast.LENGTH_LONG).show();
+
+					if (isServiceStartStopLoggingEnabled()) {
+						Toast.makeText(getApplicationContext(), getString(R.string.service_stopped), Toast.LENGTH_LONG).show();
+					}
 					
 					if (action.equals(ACTION_STOP)) {
 						ScheduleApplication.get().getHandler().postDelayed(new Runnable() {
@@ -325,6 +329,15 @@ public class ScheduleNotificationService extends Service {
 	public void notifyNewCalendar() {
 		updateNotification();
 	}
+
+	/**
+	 * Check if the service is used by the user.
+	 *
+	 * @return Whether or not the service can be started.
+	 */
+	public static boolean isServiceEnabled() {
+		return getIterationDelay() == 0;
+	}
 	
 	/**
 	 * Get iteration delay from preferences.<br>
@@ -332,32 +345,28 @@ public class ScheduleNotificationService extends Service {
 	 * 
 	 * @return The service's iteration delay.
 	 */
-	private int getIterationDelay() {
-		String defaultValue = getString(R.string.pref_main_time_iteration_relay_default);
-		String rawValue = ScheduleApplication.get().getSharedPreferences().getString(getString(R.string.pref_main_time_iteration_relay_key), defaultValue);
-
-		try {
-			return Integer.parseInt(rawValue);
-		} catch (Exception exception) {
-			return 60;
-		}
+	public static int getIterationDelay() {
+		return Utils.fromConfig(R.string.pref_main_time_iteration_relay_key, R.string.pref_main_time_iteration_relay_default, Integer::parseInt, 60);
 	}
-	
+
 	/**
 	 * Get refresh delay from preferences.<br>
 	 * The default value is <code>10</code> in case of an error.
-	 * 
-	 * @return Numbre of iteration needed to refresh the calendar.
+	 *
+	 * @return Number of iteration needed to refresh the calendar.
 	 */
-	private int getRefreshDelay() {
-		String defaultValue = getString(R.string.pref_main_time_refresh_relay_default);
-		String rawValue = ScheduleApplication.get().getSharedPreferences().getString(getString(R.string.pref_main_time_refresh_relay_key), defaultValue);
+	public static int getRefreshDelay() {
+		return Utils.fromConfig(R.string.pref_main_time_refresh_relay_key, R.string.pref_main_time_refresh_relay_default, Integer::parseInt, 10);
+	}
 
-		try {
-			return Integer.parseInt(rawValue);
-		} catch (Exception exception) {
-			return 10;
-		}
+	/**
+	 * Get service start and stop logging state from preferences.<br>
+	 * The default value is <code>false</code> in case of an error.
+	 *
+	 * @return Whether or not the start and stop states should be toast.
+	 */
+	public static boolean isServiceStartStopLoggingEnabled() {
+		return Utils.fromConfig(R.string.pref_main_logging_service_start_stop_key, R.string.pref_main_logging_service_start_stop_default, Boolean::parseBoolean, false);
 	}
 	
 	/**

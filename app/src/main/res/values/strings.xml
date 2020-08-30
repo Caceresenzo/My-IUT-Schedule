@@ -86,6 +86,20 @@
     <string name="pref_main_time_refresh_relay_title">Automatic Refresh Delay</string>
     <string name="pref_main_time_refresh_relay_summary">%s, is how much iteration has to be done before trying to refresh the calendar.</string>
     <string name="pref_main_time_refresh_relay_summary_disabled">Feature disabled, the calendar will not be automatically refresh.</string>
+    <!--  -->
+    <string name="pref_main_logging_cagetory">Logging</string>
+    <!--  -->
+    <string name="pref_main_logging_service_start_stop_key">logging_service_start_stop</string>
+    <string name="pref_main_logging_service_start_stop_default">false</string>
+    <string name="pref_main_logging_service_start_stop_title">Service Start/Stop</string>
+    <string name="pref_main_logging_service_start_stop_summary_enabled">Be notified when the service start or stop.</string>
+    <string name="pref_main_logging_service_start_stop_summary_disabled">Don\'t be notified when the service start or stop.</string>
+    <!--  -->
+    <string name="pref_main_logging_calendar_download_fail_key">logging_calendar_download_fail</string>
+    <string name="pref_main_logging_calendar_download_fail_default">false</string>
+    <string name="pref_main_logging_calendar_download_fail_title">Calendar Download Fail</string>
+    <string name="pref_main_logging_calendar_download_fail_summary_enabled">Be notified when the calendar fail to be correctly downloaded.</string>
+    <string name="pref_main_logging_calendar_download_fail_summary_disabled">Don\'t be notified when the calendar fail to be correctly downloaded.</string>
 
     <!-- About -->
     <string name="about">About</string>

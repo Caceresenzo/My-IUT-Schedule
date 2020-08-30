@@ -90,9 +90,10 @@ public class VirtualCalendarManager extends AbstractManager {
 				}
 				
 				if (virtualCalendar == null) {
-					String errorMessage = application.getString(R.string.error_failed_to_download_calendar, result.getException().getMessage());
-					
-					Toast.makeText(ScheduleApplication.get(), errorMessage, Toast.LENGTH_LONG).show();
+
+					if (isCalendarDownloadFailLoggingEnabled()) {
+						Toast.makeText(ScheduleApplication.get(), application.getString(R.string.error_failed_to_download_calendar, result.getException().getMessage()), Toast.LENGTH_LONG).show();
+					}
 					
 					if (ScheduleFragment.get() != null) {
 						ScheduleFragment.get().onCalendarDownloadFailed();
@@ -145,6 +146,16 @@ public class VirtualCalendarManager extends AbstractManager {
 		Calendar endTime = event.getEnd().toCalendar();
 
 		return (startTime.get(Calendar.YEAR) == year && startTime.get(Calendar.MONTH) == month) || (endTime.get(Calendar.YEAR) == year && endTime.get(Calendar.MONTH) == month);
+	}
+
+	/**
+	 * Get calendar download fail logging state from preferences.<br>
+	 * The default value is <code>false</code> in case of an error.
+	 *
+	 * @return Whether or not the calendar fail should be toast.
+	 */
+	public static boolean isCalendarDownloadFailLoggingEnabled() {
+		return Utils.fromConfig(R.string.pref_main_logging_calendar_download_fail_key, R.string.pref_main_logging_calendar_download_fail_default, Boolean::valueOf, false);
 	}
 
 	/** @return VirtualCalendarManager's singleton instance. */

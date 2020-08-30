@@ -48,8 +48,10 @@ public class ScheduleApplication extends Application {
 		createNotificationChannels();
 		
 		ScheduleManager.get().initialize();
-		
-		ScheduleNotificationService.startIfNotAlready(this);
+
+		if (ScheduleNotificationService.isServiceEnabled()) {
+			ScheduleNotificationService.startIfNotAlready(this);
+		}
 	}
 	
 	/** Create android's new {@link NotificationChannel notification channel}s. */
