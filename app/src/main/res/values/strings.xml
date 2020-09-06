@@ -121,4 +121,9 @@
     <string name="activity_settings">Settings</string>
     <string name="activity_schedule_item_detail">Schedule Item Detail</string>
 
+    <!-- Ads -->
+    <string name="ads_application_id">ca-app-pub-8224350508001877~9314220451</string>
+    <string name="ads_id_block_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="ads_id_block_event_details">ca-app-pub-8224350508001877/6688057114</string>
+
 </resources>

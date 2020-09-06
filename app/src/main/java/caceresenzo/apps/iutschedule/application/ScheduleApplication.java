@@ -8,6 +8,8 @@ import android.os.Build;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 
+import com.google.android.gms.ads.MobileAds;
+
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.activities.MainActivity;
 import caceresenzo.apps.iutschedule.managers.ScheduleManager;
@@ -46,6 +48,8 @@ public class ScheduleApplication extends Application {
 				.build();*/
 		
 		createNotificationChannels();
+
+		MobileAds.initialize(this);
 		
 		ScheduleManager.get().initialize();
 
