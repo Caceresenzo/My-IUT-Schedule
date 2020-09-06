@@ -11,7 +11,7 @@
     <string name="intro_welcome_title">Bienvenue</string>
     <string name="intro_welcome_description">sur ton nouvel emploi du temps</string>
     <string name="intro_source_public_title">Code Source Public</string>
-    <string name="intro_source_public_description">tu peut à n\'importe quel moment lire le code source en ligne\n(va juste dans la section \"A propos\")</string>
+    <string name="intro_source_public_description">tu peux à n\'importe quel moment lire le code source en ligne\n(va juste dans la section \"A propos\")</string>
     <string name="intro_school_title">École Compatible</string>
     <string name="intro_school_description">(enfin... peut-être...)</string>
     <string name="intro_school_radio_mine_is_present">Mon école est présente.</string>
@@ -31,8 +31,8 @@
     <string name="intro_finish_description">ton agenda est maintenant prêt</string>
 
     <!--  -->
-    <string name="service_started">La tâche de fond a démarré.</string>
-    <string name="service_stopped">La tâche de fond a été arrétée.</string>
+    <string name="service_started">Le service a démarré.</string>
+    <string name="service_stopped">Le service a été arrété.</string>
     <string name="service_action_stop">Arrêter</string>
     <string name="service_action_open_event">Ouvrir l\'Événement</string>
 
@@ -69,23 +69,23 @@
     <!--  -->
     <string name="pref_main_time_cagetory">Temps</string>
     <!--  -->
-    <string name="pref_main_time_iteration_relay_title">Délai d\'Itération</string>
-    <string name="pref_main_time_iteration_relay_summary">%s, est le temps attendu entre deux executions du service, et donc, de la mise-à-jour de la notification.</string>
-    <string name="pref_main_time_iteration_relay_summary_disabled">Fonctionnalité désactivé, le service de fond ne vas pas être utilisé.</string>
+    <string name="pref_main_time_iteration_relay_title">Délai d\'Actualisation</string>
+    <string name="pref_main_time_iteration_relay_summary">%s, la notification est mise-à-jour.</string>
+    <string name="pref_main_time_iteration_relay_summary_disabled">Notification désactivée.</string>
     <!--  -->
     <string name="pref_main_time_refresh_relay_title">Délai de Rafraichissement Automatique</string>
-    <string name="pref_main_time_refresh_relay_summary">%s, est le nombre d\'itération du service qui doit être fait avant qu\'une tentative d\'actualisation du calendrier soit faite.</string>
-    <string name="pref_main_time_refresh_relay_summary_disabled">Fonctionnalité désactivé, le calendrier ne sera jamais mis-à-jour automatiquement.</string>
+    <string name="pref_main_time_refresh_relay_summary">%s, le calendrier est mis-à-jour .</string>
+    <string name="pref_main_time_refresh_relay_summary_disabled">Le calendrier ne sera jamais rafraîchit automatiquement.</string>
     <!--  -->
     <string name="pref_main_logging_cagetory">Journalisation</string>
     <!--  -->
     <string name="pref_main_logging_service_start_stop_title">Démarrage/Arrêt du Service</string>
-    <string name="pref_main_logging_service_start_stop_summary_enabled">Soyez notifié(e) quand le service démarre ou s\'arrête.</string>
-    <string name="pref_main_logging_service_start_stop_summary_disabled">Ne soyez pas notifié(e) quand le service démarre ou s\'arrête</string>
+    <string name="pref_main_logging_service_start_stop_summary_enabled">Vous serez notifié quand le service démarre ou s\'arrête.</string>
+    <string name="pref_main_logging_service_start_stop_summary_disabled">Vous ne serez pas notifié quand le service démarre ou s\'arrête.</string>
     <!--  -->
-    <string name="pref_main_logging_calendar_download_fail_title">Échec du téléchargement du calendrier</string>
-    <string name="pref_main_logging_calendar_download_fail_summary_enabled">Soyez notifié(e) quand le calendrier ne se télécharge pas correctement.</string>
-    <string name="pref_main_logging_calendar_download_fail_summary_disabled">Ne soyez pas notifié(e) quand le calendrier ne se télécharge pas correctement.</string>
+    <string name="pref_main_logging_calendar_download_fail_title">Échec du téléchargement du Calendrier</string>
+    <string name="pref_main_logging_calendar_download_fail_summary_enabled">Vous serez notifié quand le rafraichissement échoue.</string>
+    <string name="pref_main_logging_calendar_download_fail_summary_disabled">Vous ne serez pas notifié quand le rafraichissement échoue.</string>
 
     <!-- About -->
     <string name="about">A propos</string>
