@@ -121,7 +121,7 @@ public class ScheduleItemDetailActivity extends AppCompatActivity {
 
 		AdView adView = new AdView(this);
 		adView.setAdSize(AdSize.BANNER);
-		adView.setAdUnitId(getString(R.string.ads_id_block_test));
+		adView.setAdUnitId(getString(R.string.ads_id_block_event_details));
 		adView.setAdListener(new AdListener() {
 			@Override
 			public void onAdLoaded() {
