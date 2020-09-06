@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  -->
+    <string-array name="pref_main_time_iteration_relay_display">
+        <item>Désactiver le service</item>
+        <item>Toutes les 30 secondes (non recommandé)</item>
+        <item>Toutes les minutes (recommandé)</item>
+        <item>Toutes les 5 minutes</item>
+        <item>Toutes les 10 minutes</item>
+        <item>Toutes les 20 minutes</item>
+    </string-array>
+
+    <!--  -->
+    <string-array name="pref_main_time_refresh_relay_display">
+        <item>Désactiver le rafraichissement automatique</item>
+        <item>Toutes les actualisations (non recommandé)</item>
+        <item>Toutes les 10 actualisations (recommandé)</item>
+        <item>Toutes les 20 actualisations</item>
+        <item>Toutes les 50 actualisations</item>
+        <item>Toutes les 100 actualisations</item>
+    </string-array>
+
+</resources>

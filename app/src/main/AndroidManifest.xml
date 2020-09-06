@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="caceresenzo.apps.iutschedule"
+    android:versionCode="1100"
+    android:versionName="1.1">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!--<uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="28" />-->
+
+    <application
+        android:name=".application.ScheduleApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_launcher"
+        android:label="@string/application_name"
+        android:roundIcon="@mipmap/icon_launcher_round"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/application_name"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.AboutActivity"
+            android:label="@string/activity_about"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppThemeInversed"></activity>
+        <activity
+            android:name=".activities.IntroActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Intro" />
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/activity_settings"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activities.ScheduleItemDetailActivity"
+            android:label="@string/activity_schedule_item_detail"
+            android:launchMode="standard"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppThemeInversed"></activity>
+
+        <service
+            android:name=".services.ScheduleNotificationService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <receiver
+            android:name=".receivers.BootCompletedBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="Device Boot Event Notifier">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/ads_application_id" />
+    </application>
+
+</manifest>

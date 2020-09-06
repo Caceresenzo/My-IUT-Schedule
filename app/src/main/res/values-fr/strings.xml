@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="application_name">Mon Emploi du Temps d\'IUT</string>
+
+    <!--  -->
+    <string name="notification_channel_next_event_title">Prochain Évenement</string>
+    <string name="notification_channel_next_event_description">Affiche le prochain événement de ton emploi du temps.</string>
+
+    <!--  -->
+    <string name="intro_welcome_title">Bienvenue</string>
+    <string name="intro_welcome_description">sur ton nouvel emploi du temps</string>
+    <string name="intro_source_public_title">Code Source Public</string>
+    <string name="intro_source_public_description">tu peux à n\'importe quel moment lire le code source en ligne\n(va juste dans la section \"A propos\")</string>
+    <string name="intro_school_title">École Compatible</string>
+    <string name="intro_school_description">(enfin... peut-être...)</string>
+    <string name="intro_school_radio_mine_is_present">Mon école est présente.</string>
+    <string name="intro_school_radio_mine_is_not_present">Mon école n\'est pas présente, mais je veux essayer quand même...</string>
+    <string name="intro_school_error_select_choice">Veuillez sélectionner une réponse.</string>
+    <string name="intro_account_title">Configuration du Compte</string>
+    <string name="intro_account_description">(c\'est ton numéro d\'étudiant)</string>
+    <string name="intro_account_button_check">VÉRIFIER</string>
+    <string name="intro_account_state">État actuel</string>
+    <string name="intro_account_state_waiting">EN ATTENTE</string>
+    <string name="intro_account_state_checking">VÉRIFICATION</string>
+    <string name="intro_account_state_valid">VALIDE</string>
+    <string name="intro_account_state_invalid">NON VALIDE</string>
+    <string name="intro_account_state_error">ERREUR</string>
+    <string name="intro_account_error_invalid">Veuillez valider votre compte d\'abord.</string>
+    <string name="intro_finish_title">Terminé!</string>
+    <string name="intro_finish_description">ton agenda est maintenant prêt</string>
+
+    <!--  -->
+    <string name="service_started">Le service a démarré.</string>
+    <string name="service_stopped">Le service a été arrété.</string>
+    <string name="service_action_stop">Arrêter</string>
+    <string name="service_action_open_event">Ouvrir l\'Événement</string>
+
+    <!--  -->
+    <string name="action_today">Aujourd\'hui</string>
+    <string name="action_refresh">Rafraichir</string>
+    <string name="action_group_visibility">Visibilité</string>
+    <string name="action_day_view">Vue du jour</string>
+    <string name="action_three_day_view">Vue sur 3 jours</string>
+    <string name="action_week_view">Vue de la semaine</string>
+    <string name="action_settings">Paramètres</string>
+
+    <!--  -->
+    <string name="downloading_calendar">Actualisation...</string>
+
+    <!--  -->
+    <string name="error_no_calendar">Aucun Calendrier.</string>
+    <string name="error_no_next_event">Aucun Événement Restant.</string>
+    <string name="error_failed_to_download_calendar">Le téléchargement du calendrier a échoué.\n%s</string>
+
+    <!--  -->
+    <string name="time_range_tomorow">demain</string>
+    <string name="time_range_in_days_format">dans %s jours</string>
+
+    <!--  -->
+    <string name="day_of_week_date_format">EEEE dd MMM yyyy</string>
+    <string name="week_day_date_format">d/M</string>
+
+    <!-- Preferences -->
+    <string name="pref_main_general_cagetory">Générale</string>
+    <!--  -->
+    <string name="pref_main_general_reset_title">Remise-à-zero</string>
+    <string name="pref_main_general_reset_summary">Relancer l\'écran d\'installation pour changer d\'utilisateur.</string>
+    <!--  -->
+    <string name="pref_main_time_cagetory">Temps</string>
+    <!--  -->
+    <string name="pref_main_time_iteration_relay_title">Délai d\'Actualisation</string>
+    <string name="pref_main_time_iteration_relay_summary">%s, la notification est mise-à-jour.</string>
+    <string name="pref_main_time_iteration_relay_summary_disabled">Notification désactivée.</string>
+    <!--  -->
+    <string name="pref_main_time_refresh_relay_title">Délai de Rafraichissement Automatique</string>
+    <string name="pref_main_time_refresh_relay_summary">%s, le calendrier est mis-à-jour .</string>
+    <string name="pref_main_time_refresh_relay_summary_disabled">Le calendrier ne sera jamais rafraîchit automatiquement.</string>
+    <!--  -->
+    <string name="pref_main_logging_cagetory">Journalisation</string>
+    <!--  -->
+    <string name="pref_main_logging_service_start_stop_title">Démarrage/Arrêt du Service</string>
+    <string name="pref_main_logging_service_start_stop_summary_enabled">Vous serez notifié quand le service démarre ou s\'arrête.</string>
+    <string name="pref_main_logging_service_start_stop_summary_disabled">Vous ne serez pas notifié quand le service démarre ou s\'arrête.</string>
+    <!--  -->
+    <string name="pref_main_logging_calendar_download_fail_title">Échec du téléchargement du Calendrier</string>
+    <string name="pref_main_logging_calendar_download_fail_summary_enabled">Vous serez notifié quand le rafraichissement échoue.</string>
+    <string name="pref_main_logging_calendar_download_fail_summary_disabled">Vous ne serez pas notifié quand le rafraichissement échoue.</string>
+
+    <!-- About -->
+    <string name="about">A propos</string>
+    <!--  -->
+    <string name="about_application">Application</string>
+    <string name="about_application_author">par @Caceresenzo</string>
+    <string name="about_application_github">Voir le GitHub</string>
+    <string name="about_description">Description</string>
+    <string name="about_description_text">Cette application fournit un accès rapide à son emploi du temps et propose une notification pour toujours savoir quel cours/événement est le suivant.</string>
+    <string name="about_author">Auteur</string>
+    <string name="about_author_author_detail">Enzo Caceres</string>
+    <string name="about_author_author_location">France</string>
+    <string name="about_author_github">Voir mon Github</string>
+    <string name="about_author_website">Voir mon site web</string>
+    <string name="about_author_email">M\'envoyer un email</string>
+
+    <!-- Activities -->
+    <string name="activity_settings">Paramètres</string>
+    <string name="activity_schedule_item_detail">Détail d\'un élément du Calendrier</string>
+
+</resources>

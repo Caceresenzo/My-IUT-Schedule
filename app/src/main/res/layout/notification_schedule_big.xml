@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <include layout="@layout/notification_schedule_part_title" />
+
+    <TextView
+        android:id="@+id/notification_schedule_textview_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notification_schedule_textview_main"
+        android:layout_margin="4dp"
+        android:layout_marginLeft="6dp"
+        android:text="Description"
+        android:textAppearance="@style/TextAppearance.Compat.Notification.Info" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notification_schedule_textview_description">
+
+        <include layout="@layout/notification_schedule_part_icons" />
+    </RelativeLayout>
+
+</RelativeLayout>
