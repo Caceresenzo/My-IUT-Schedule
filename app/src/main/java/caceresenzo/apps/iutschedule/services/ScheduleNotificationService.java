@@ -7,13 +7,17 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.media.Image;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.Arrays;
 import java.util.List;
@@ -154,26 +158,54 @@ public class ScheduleNotificationService extends Service {
 		VirtualCalendar virtualCalendar = VirtualCalendarManager.get().getCurrentVirtualCalendar();
 		VirtualCalendarEvent nextEvent = null;
 		int layoutId = R.layout.notification_schedule;
-		
+
 		if (virtualCalendar == null || VirtualCalendarManager.get().isDownloading()) {
 			layoutId = R.layout.notification_schedule_no_icon;
 		} else {
 			nextEvent = virtualCalendar.getNextEvent(System.currentTimeMillis());
-			
+
 			if (nextEvent == null) {
 				layoutId = R.layout.notification_schedule_no_icon;
 			}
 		}
-		
+
 		RemoteViews notificationLayout = new RemoteViews(getPackageName(), layoutId);
 		RemoteViews notificationBigLayout = null;
-		
+
 		if (layoutId == R.layout.notification_schedule) {
 			notificationBigLayout = new RemoteViews(getPackageName(), R.layout.notification_schedule_big);
+		}
+
+		try {
+			if ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES) {
+				int[] ids = {
+						R.id.notification_schedule_imageview_icon_location,
+						R.id.notification_schedule_imageview_icon_time_range,
+				};
+
+				RemoteViews[] remoteViewss = {
+						notificationLayout,
+						notificationBigLayout
+				};
+
+				for (RemoteViews remoteViews : remoteViewss) {
+					if (remoteViews == null) {
+						continue;
+					}
+
+					for (int id : ids) {
+						remoteViews.setInt(id, "setColorFilter", ContextCompat.getColor(this, R.color.white));
+					}
+				}
+			}
+		} catch (Exception exception) {
+			exception.printStackTrace();
 		}
 		
 		List<RemoteViews> remoteViewss = Arrays.asList(notificationLayout, notificationBigLayout);
 		String mainText = getString(R.string.error_no_calendar);
+
+
 		
 		if (VirtualCalendarManager.get().isDownloading()) {
 			mainText = getString(R.string.downloading_calendar);

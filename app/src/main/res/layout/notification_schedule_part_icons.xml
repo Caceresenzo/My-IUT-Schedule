@@ -3,8 +3,7 @@
     android:layout_height="24dp"
     android:layout_margin="2dp"
     android:divider="@drawable/notification_item_devider"
-    android:gravity="center"
-    android:showDividers="middle" >
+    android:gravity="center" >
 
     <RelativeLayout
         android:layout_width="wrap_content"
