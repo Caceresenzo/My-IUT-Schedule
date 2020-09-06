@@ -1,13 +1,14 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group>
         <item
             android:id="@+id/drawer_my_schedule"
             android:checkable="true"
             android:icon="@drawable/icon_av_timer_24dp"
-            android:title="My Schedule"/>
+            android:title="My Schedule" />
     </group>
-    <item
+
+    <item
         android:id="@+id/drawer_group_students"
         android:title="Students Added"
         android:visible="false">
@@ -15,10 +16,10 @@
             <group>
                 <item
                     android:icon="@drawable/icon_account_circle_white_24dp"
-                    android:title="Enzo CACERES"/>
+                    android:title="Enzo CACERES" />
                 <item
                     android:icon="@drawable/icon_account_circle_white_24dp"
-                    android:title="Dorian HARDY"/>
+                    android:title="Dorian HARDY" />
             </group>
         </menu>
     </item>
@@ -26,17 +27,17 @@
         android:id="@+id/drawer_group_other"
         android:title="Other">
         <menu>
-            <group android:id="@+id/nav_footer" >
+            <group android:id="@+id/nav_footer">
                 <item
                     android:id="@+id/drawer_settings"
                     android:checkable="true"
                     android:icon="@drawable/icon_settings_white_24dp"
-                    android:title="Settings"/>
+                    android:title="Settings" />
                 <item
                     android:id="@+id/drawer_about"
                     android:checkable="true"
                     android:icon="@drawable/icon_info_white_24dp"
-                    android:title="About"/>
+                    android:title="About" />
             </group>
         </menu>
     </item>

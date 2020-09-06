@@ -152,20 +152,20 @@ public class ScheduleItemDetailActivity extends AppCompatActivity {
 
 		if (!aboutItems.isEmpty()) {
 			//if (adapter == null) {
-				View view = LayoutInflater.from(this).inflate(R.layout.ea_card_list, null);
-				listLinearLayout.addView(view);
+			View view = LayoutInflater.from(this).inflate(R.layout.ea_card_list, null);
+			listLinearLayout.addView(view);
 
-				TextView cardTitleTextView = view.findViewById(R.id.card_title);
-				RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+			TextView cardTitleTextView = view.findViewById(R.id.card_title);
+			RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
 
-				if (Utils.validate(title)) {
-					cardTitleTextView.setText(title);
-				} else {
-					cardTitleTextView.setVisibility(View.GONE);
-				}
+			if (Utils.validate(title)) {
+				cardTitleTextView.setText(title);
+			} else {
+				cardTitleTextView.setVisibility(View.GONE);
+			}
 
-				recyclerView.setLayoutManager(new LinearLayoutManager(this));
-				recyclerView.setAdapter(adapter = new ModifiedEasyAboutAdapter(this, new ArrayList<>(aboutItems)));
+			recyclerView.setLayoutManager(new LinearLayoutManager(this));
+			recyclerView.setAdapter(adapter = new ModifiedEasyAboutAdapter(this, new ArrayList<>(aboutItems)));
 			/*} else {
 				if (adapter.getItemList().addAll(aboutItems)) {
 					adapter.notifyDataSetChanged();

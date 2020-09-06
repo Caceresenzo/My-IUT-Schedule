@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="164dp"
-    android:paddingTop="40dp" >
+    android:paddingTop="40dp">
 
     <TextView
         android:id="@+id/fragment_slide_schools_textview_title"
@@ -39,8 +39,7 @@
         app:layout_parallaxFactor="0.1"
         android:fadeScrollbars="false"
         android:fillViewport="true"
-        android:scrollbars="vertical" >
-    </androidx.recyclerview.widget.RecyclerView>
+        android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
     <RadioGroup
         android:id="@+id/fragment_slide_schools_radiogroup_answer"
@@ -51,7 +50,7 @@
         android:layout_marginRight="32dp"
         app:layout_parallaxFactor="0.4"
         android:orientation="vertical"
-        android:paddingTop="8dp" >
+        android:paddingTop="8dp">
 
         <RadioButton
             android:id="@+id/fragment_slide_schools_radiobutton_is_present"

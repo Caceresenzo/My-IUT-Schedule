@@ -9,5 +9,4 @@
     android:minLines="1"
     android:singleLine="true"
     android:text="A Lesson"
-    android:textAppearance="@style/TextAppearance.Compat.Notification.Title" />
-<!-- android:layout_margin="4dp" -->
+    android:textAppearance="@style/TextAppearance.Compat.Notification.Title" /><!-- android:layout_margin="4dp" -->

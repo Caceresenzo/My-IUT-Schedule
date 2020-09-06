@@ -13,7 +13,7 @@ import com.marcoscg.easyabout.items.PersonAboutItem;
 import caceresenzo.apps.iutschedule.R;
 
 public class AboutFragment extends EasyAboutFragment {
-	
+
 	@Override
 	protected void configureFragment(Context context, View rootView, Bundle savedInstanceState) {
 		addCard(new AboutCard.Builder(context)
@@ -25,7 +25,7 @@ public class AboutFragment extends EasyAboutFragment {
 						.setTitle(R.string.about_application_github)
 						.setIcon(R.drawable.icon_social_github_black_24dp))
 				.build());
-		
+
 		addCard(new AboutCard.Builder(context)
 				.setTitle(R.string.about_author)
 				.addItem(new PersonAboutItem.Builder(context)
@@ -40,7 +40,7 @@ public class AboutFragment extends EasyAboutFragment {
 						.setTitle(R.string.about_author_email)
 						.setIcon(R.drawable.icon_mail_outline_white_24dp))
 				.build());
-		
+
 		addCard(new AboutCard.Builder(context)
 				.setTitle(R.string.about_description)
 				.addItem(new NormalAboutItem.Builder(context)
@@ -48,5 +48,5 @@ public class AboutFragment extends EasyAboutFragment {
 						.build())
 				.build());
 	}
-	
+
 }

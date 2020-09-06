@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="164dp"
-    android:paddingTop="40dp" >
+    android:paddingTop="40dp">
 
     <TextView
         android:id="@+id/fragment_slide_account_configuration_textview_title"
@@ -38,7 +38,7 @@
         android:layout_marginRight="32dp"
         app:layout_parallaxFactor="0.1"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/fragment_slide_account_configuration_edittext_student_id"

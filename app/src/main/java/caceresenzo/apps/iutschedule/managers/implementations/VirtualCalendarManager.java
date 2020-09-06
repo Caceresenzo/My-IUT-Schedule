@@ -21,55 +21,59 @@ import caceresenzo.apps.iutschedule.utils.AsyncTaskResult;
 import caceresenzo.apps.iutschedule.utils.Utils;
 
 public class VirtualCalendarManager extends AbstractManager {
-	
+
 	/* Singleton */
 	private static VirtualCalendarManager INSTANCE;
-	
+
 	/* Variables */
 	private final Map<Long, VirtualCalendar> calendars;
 	private VirtualCalendar currentCalendar;
 	private boolean downloading;
-	
+
 	/* Private Constructor */
 	private VirtualCalendarManager() {
 		super();
-		
+
 		this.calendars = new HashMap<>();
 		this.downloading = false;
 	}
-	
-	/** Invalidate the current {@link Calendar calendar}, usually to force a refresh. */
+
+	/**
+	 * Invalidate the current {@link Calendar calendar}, usually to force a refresh.
+	 */
 	public void invalidateCurrentCalendar() {
 		this.currentCalendar = null;
 	}
-	
-	/** Re-dowload the calendar but only if the network is connected. */
+
+	/**
+	 * Re-dowload the calendar but only if the network is connected.
+	 */
 	public void refreshCalendar() {
 		if (Utils.hasInternetConnection(application) && !downloading) {
 			fetchCalendar(StudentManager.get().getSelectedStudent());
 		}
 	}
-	
+
 	public void fetchCalendar(final Student student) {
 		new AsyncTask<Student, Void, AsyncTaskResult<VirtualCalendar>>() {
 			@Override
 			protected void onPreExecute() {
 				downloading = true;
-				
+
 				ScheduleApplication.get().getHandler().post(new Runnable() {
 					@Override
 					public void run() {
 						if (ScheduleFragment.get() != null) {
 							ScheduleFragment.get().onCalendarDownloadStarted();
 						}
-						
+
 						if (AccountConfigurationIntroSlide.get() != null) {
 							AccountConfigurationIntroSlide.get().onCalendarDownloadStarted();
 						}
 					}
 				});
 			}
-			
+
 			@Override
 			protected AsyncTaskResult<VirtualCalendar> doInBackground(Student... params) {
 				try {
@@ -78,23 +82,23 @@ public class VirtualCalendarManager extends AbstractManager {
 					return new AsyncTaskResult<>(exception);
 				}
 			}
-			
+
 			@Override
 			protected void onPostExecute(AsyncTaskResult<VirtualCalendar> result) {
 				VirtualCalendar virtualCalendar = result.getResult();
-				
+
 				downloading = false;
-				
+
 				if (virtualCalendar == null) {
 					virtualCalendar = calendars.get(student.getId());
 				}
-				
+
 				if (virtualCalendar == null) {
 
 					if (isCalendarDownloadFailLoggingEnabled()) {
 						Toast.makeText(ScheduleApplication.get(), application.getString(R.string.error_failed_to_download_calendar, result.getException().getMessage()), Toast.LENGTH_LONG).show();
 					}
-					
+
 					if (ScheduleFragment.get() != null) {
 						ScheduleFragment.get().onCalendarDownloadFailed();
 					}
@@ -103,9 +107,9 @@ public class VirtualCalendarManager extends AbstractManager {
 					}
 				} else {
 					currentCalendar = virtualCalendar;
-					
+
 					EventColorManager.get().onNewCalendar();
-					
+
 					if (ScheduleNotificationService.isRunning(application)) {
 						ScheduleNotificationService.get().notifyNewCalendar();
 					}
@@ -119,26 +123,27 @@ public class VirtualCalendarManager extends AbstractManager {
 			}
 		}.execute(student);
 	}
-	
-	/** @return Currently loaded {@link VirtualCalendar}. */
+
+	/**
+	 * @return Currently loaded {@link VirtualCalendar}.
+	 */
 	public VirtualCalendar getCurrentVirtualCalendar() {
 		return currentCalendar;
 	}
-	
-	/** @return Weather the current calendar is being download at this instant or not. */
+
+	/**
+	 * @return Weather the current calendar is being download at this instant or not.
+	 */
 	public boolean isDownloading() {
 		return downloading;
 	}
-	
+
 	/**
 	 * Checks if an event falls into a specific year and month.
-	 * 
-	 * @param event
-	 *            The event to check for.
-	 * @param year
-	 *            The year.
-	 * @param month
-	 *            The month.
+	 *
+	 * @param event The event to check for.
+	 * @param year  The year.
+	 * @param month The month.
 	 * @return True if the event matches the year and month.
 	 */
 	public static boolean eventMatches(VirtualCalendarEvent event, int year, int month) {
@@ -158,13 +163,15 @@ public class VirtualCalendarManager extends AbstractManager {
 		return Utils.fromConfig(R.string.pref_main_logging_calendar_download_fail_key, R.string.pref_main_logging_calendar_download_fail_default, Boolean::valueOf, false);
 	}
 
-	/** @return VirtualCalendarManager's singleton instance. */
+	/**
+	 * @return VirtualCalendarManager's singleton instance.
+	 */
 	public static final VirtualCalendarManager get() {
 		if (INSTANCE == null) {
 			INSTANCE = new VirtualCalendarManager();
 		}
-		
+
 		return INSTANCE;
 	}
-	
+
 }
