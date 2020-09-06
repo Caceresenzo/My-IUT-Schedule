@@ -336,7 +336,7 @@ public class ScheduleNotificationService extends Service {
 	 * @return Whether or not the service can be started.
 	 */
 	public static boolean isServiceEnabled() {
-		return getIterationDelay() == 0;
+		return getIterationDelay() != 0;
 	}
 	
 	/**
