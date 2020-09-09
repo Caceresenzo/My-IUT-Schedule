@@ -275,7 +275,7 @@ public class ScheduleNotificationService extends Service {
 				.setSmallIcon(R.mipmap.icon_launcher)
 				.setPriority(NotificationCompat.PRIORITY_DEFAULT)
 				.setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-				.setFullScreenIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0), true)
+				.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0))
 				.addAction(cancelAction)).build();
 	}
 
