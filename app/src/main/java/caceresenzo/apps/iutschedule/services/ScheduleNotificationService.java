@@ -91,12 +91,7 @@ public class ScheduleNotificationService extends Service {
 					}
 
 					if (action.equals(ACTION_STOP)) {
-						ScheduleApplication.get().getHandler().postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								ScheduleApplication.get().shutdown();
-							}
-						}, 500);
+						ScheduleApplication.get().getHandler().postDelayed(() -> ScheduleApplication.get().shutdown(), 500);
 					}
 					break;
 				}
@@ -432,7 +427,7 @@ public class ScheduleNotificationService extends Service {
 	 * @return Weather it is running or not.
 	 */
 	public static boolean isRunning(Context context) {
-		return Utils.isServiceRunning(context, ScheduleNotificationService.class);
+		return Utils.isServiceRunning(context, ScheduleNotificationService.class) && INSTANCE != null;
 	}
 
 	/**

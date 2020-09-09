@@ -6,6 +6,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
@@ -17,6 +18,7 @@ import caceresenzo.apps.iutschedule.fragments.schedule.ScheduleFragment;
 import caceresenzo.apps.iutschedule.managers.AbstractManager;
 import caceresenzo.apps.iutschedule.models.Student;
 import caceresenzo.apps.iutschedule.services.ScheduleNotificationService;
+import caceresenzo.apps.iutschedule.tasks.CalendarDownloadAsyncTask;
 import caceresenzo.apps.iutschedule.utils.AsyncTaskResult;
 import caceresenzo.apps.iutschedule.utils.Utils;
 
@@ -27,13 +29,11 @@ public class VirtualCalendarManager extends AbstractManager {
 
 	/* Variables */
 	private VirtualCalendar currentCalendar;
-	private boolean downloading;
+	private CalendarDownloadAsyncTask downloadTask;
 
 	/* Private Constructor */
 	private VirtualCalendarManager() {
 		super();
-
-		this.downloading = false;
 	}
 
 	/**
@@ -47,75 +47,21 @@ public class VirtualCalendarManager extends AbstractManager {
 	 * Re-dowload the calendar but only if the network is connected.
 	 */
 	public void refreshCalendar() {
-		if (Utils.hasInternetConnection(application) && !downloading) {
+		if (Utils.hasInternetConnection(application) && !isDownloading()) {
 			fetchCalendar(StudentManager.get().getSelectedStudent());
 		}
 	}
 
 	public void fetchCalendar(final Student student) {
-		new AsyncTask<Student, Void, AsyncTaskResult<VirtualCalendar>>() {
-			@Override
-			protected void onPreExecute() {
-				downloading = true;
+		if (student == null) {
+			return;
+		}
 
-				ScheduleApplication.get().getHandler().post(new Runnable() {
-					@Override
-					public void run() {
-						if (ScheduleFragment.get() != null) {
-							ScheduleFragment.get().onCalendarDownloadStarted();
-						}
+		downloadTask = new CalendarDownloadAsyncTask(student.getId(), (calendar) -> {
+			this.currentCalendar = calendar;
+		});
 
-						if (AccountConfigurationIntroSlide.get() != null) {
-							AccountConfigurationIntroSlide.get().onCalendarDownloadStarted();
-						}
-					}
-				});
-			}
-
-			@Override
-			protected AsyncTaskResult<VirtualCalendar> doInBackground(Student... params) {
-				try {
-					return new AsyncTaskResult<>(new VirtualCalendarRemoteParser(student.getId()).parse());
-				} catch (Exception exception) {
-					return new AsyncTaskResult<>(exception);
-				}
-			}
-
-			@Override
-			protected void onPostExecute(AsyncTaskResult<VirtualCalendar> result) {
-				VirtualCalendar virtualCalendar = result.getResult();
-
-				downloading = false;
-
-				if (virtualCalendar == null) {
-
-					if (isCalendarDownloadFailLoggingEnabled()) {
-						Toast.makeText(ScheduleApplication.get(), application.getString(R.string.error_failed_to_download_calendar, result.getException().getMessage()), Toast.LENGTH_LONG).show();
-					}
-
-					if (ScheduleFragment.get() != null) {
-						ScheduleFragment.get().onCalendarDownloadFailed();
-					}
-					if (AccountConfigurationIntroSlide.get() != null) {
-						AccountConfigurationIntroSlide.get().onCalendarDownloadFailed();
-					}
-				} else {
-					currentCalendar = virtualCalendar;
-
-					EventColorManager.get().onNewCalendar();
-
-					if (ScheduleNotificationService.isRunning(application)) {
-						ScheduleNotificationService.get().notifyNewCalendar();
-					}
-					if (ScheduleFragment.get() != null) {
-						ScheduleFragment.get().onNewCalendar();
-					}
-					if (AccountConfigurationIntroSlide.get() != null) {
-						AccountConfigurationIntroSlide.get().onNewCalendar();
-					}
-				}
-			}
-		}.execute(student);
+		downloadTask.execute(student);
 	}
 
 	/**
@@ -129,7 +75,11 @@ public class VirtualCalendarManager extends AbstractManager {
 	 * @return Weather the current calendar is being download at this instant or not.
 	 */
 	public boolean isDownloading() {
-		return downloading;
+		if (downloadTask == null) {
+			return false;
+		}
+
+		return downloadTask.getStatus().ordinal() < AsyncTask.Status.FINISHED.ordinal();
 	}
 
 	/**
