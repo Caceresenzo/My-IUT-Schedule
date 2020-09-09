@@ -26,7 +26,6 @@ public class VirtualCalendarManager extends AbstractManager {
 	private static VirtualCalendarManager INSTANCE;
 
 	/* Variables */
-	private final Map<Long, VirtualCalendar> calendars;
 	private VirtualCalendar currentCalendar;
 	private boolean downloading;
 
@@ -34,7 +33,6 @@ public class VirtualCalendarManager extends AbstractManager {
 	private VirtualCalendarManager() {
 		super();
 
-		this.calendars = new HashMap<>();
 		this.downloading = false;
 	}
 
@@ -88,10 +86,6 @@ public class VirtualCalendarManager extends AbstractManager {
 				VirtualCalendar virtualCalendar = result.getResult();
 
 				downloading = false;
-
-				if (virtualCalendar == null) {
-					virtualCalendar = calendars.get(student.getId());
-				}
 
 				if (virtualCalendar == null) {
 
