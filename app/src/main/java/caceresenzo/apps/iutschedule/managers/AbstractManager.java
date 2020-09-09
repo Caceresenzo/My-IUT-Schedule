@@ -8,7 +8,7 @@ import caceresenzo.apps.iutschedule.application.ScheduleApplication;
 
 public abstract class AbstractManager {
 
-	/* Shareds */
+	/* Shared */
 	protected ScheduleApplication application;
 
 	/* Constructor */
@@ -24,7 +24,7 @@ public abstract class AbstractManager {
 	}
 
 	/**
-	 * Called when the {@link AbstractManager manager} shoud do a regular task like saving data.
+	 * Called when the {@link AbstractManager manager} should do a regular task like saving data.
 	 */
 	public void step() {
 		;

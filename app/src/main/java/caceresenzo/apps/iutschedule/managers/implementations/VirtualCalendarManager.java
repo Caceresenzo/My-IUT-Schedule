@@ -44,7 +44,7 @@ public class VirtualCalendarManager extends AbstractManager {
 	}
 
 	/**
-	 * Re-dowload the calendar but only if the network is connected.
+	 * Re-download the calendar but only if the network is connected.
 	 */
 	public void refreshCalendar() {
 		if (Utils.hasInternetConnection(application) && !isDownloading()) {
