@@ -22,11 +22,11 @@
     <!--  -->
     <string-array name="pref_main_time_refresh_relay_display">
         <item>Disable automatic refresh</item>
-        <item>Every iteration (not recommended)</item>
-        <item>Every 10 iterations (recommended)</item>
-        <item>Every 20 iterations</item>
-        <item>Every 50 iterations</item>
-        <item>Every 100 iterations</item>
+        <item>Every refresh (not recommended)</item>
+        <item>Every 10 refresh (recommended)</item>
+        <item>Every 20 refresh</item>
+        <item>Every 50 refresh</item>
+        <item>Every 100 refresh</item>
     </string-array>
     <string-array name="pref_main_time_refresh_relay_values">
         <item>0</item>
