@@ -79,7 +79,7 @@ public class VirtualCalendarManager extends AbstractManager {
 			return false;
 		}
 
-		return downloadTask.getStatus().ordinal() < AsyncTask.Status.FINISHED.ordinal();
+		return downloadTask.isDownloading();
 	}
 
 	/**

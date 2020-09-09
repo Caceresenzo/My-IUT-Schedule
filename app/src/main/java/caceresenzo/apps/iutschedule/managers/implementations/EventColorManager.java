@@ -50,8 +50,7 @@ public class EventColorManager extends AbstractManager implements OnNewCalendarL
 	}
 
 	@Override
-	public void onNewCalendar() {
-		VirtualCalendar newCalendar = VirtualCalendarManager.get().getCurrentVirtualCalendar();
+	public void onNewCalendar(VirtualCalendar newCalendar) {
 		String name = newCalendar.getName();
 
 		if (!name.equals(oldCalendarName)) {

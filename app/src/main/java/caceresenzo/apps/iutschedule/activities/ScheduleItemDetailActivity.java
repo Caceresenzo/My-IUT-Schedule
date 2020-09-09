@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import caceresenzo.apps.iutschedule.BuildConfig;
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
 import caceresenzo.apps.iutschedule.calendar.VirtualCalendarEvent;
@@ -121,7 +122,13 @@ public class ScheduleItemDetailActivity extends AppCompatActivity {
 
 		AdView adView = new AdView(this);
 		adView.setAdSize(AdSize.BANNER);
-		adView.setAdUnitId(getString(R.string.ads_id_block_event_details));
+
+		int adUnitId = R.string.ads_id_block_event_details;
+		if (BuildConfig.DEBUG) {
+			adUnitId = R.string.ads_id_block_test;
+		}
+
+		adView.setAdUnitId(getString(adUnitId));
 		adView.setAdListener(new AdListener() {
 			@Override
 			public void onAdLoaded() {

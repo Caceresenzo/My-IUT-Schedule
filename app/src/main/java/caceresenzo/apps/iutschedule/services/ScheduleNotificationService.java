@@ -267,6 +267,8 @@ public class ScheduleNotificationService extends Service {
 		PendingIntent cancelPendingIntent = PendingIntent.getService(this, 0, cancelIntent, 0);
 		NotificationCompat.Action cancelAction = new NotificationCompat.Action(R.drawable.icon_stop_black_24dp, getString(R.string.service_action_stop), cancelPendingIntent);
 
+		System.out.println("CREATING NOTIFICATION");
+
 		return attachNotificationRemoteViews(new NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL.NEXT_EVENT)
 				.setOnlyAlertOnce(true)
 				.setWhen(System.currentTimeMillis())

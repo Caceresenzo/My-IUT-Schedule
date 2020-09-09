@@ -146,7 +146,7 @@ public class AccountConfigurationIntroSlide extends SlideFragment implements OnN
 	}
 
 	@Override
-	public void onNewCalendar() {
+	public void onNewCalendar(VirtualCalendar virtualCalendar) {
 		enableInputs(true);
 
 		publishCurrentCalendar();

@@ -23,6 +23,7 @@ public class CalendarDownloadAsyncTask extends AsyncTask<Student, Void, AsyncTas
 	/* Variables */
 	private final long studentId;
 	private final Callback callback;
+	private boolean downloading;
 
 	/* Constructor */
 	public CalendarDownloadAsyncTask(long studentId, Callback callback) {
@@ -34,6 +35,8 @@ public class CalendarDownloadAsyncTask extends AsyncTask<Student, Void, AsyncTas
 
 	@Override
 	protected void onPreExecute() {
+		this.downloading = true;
+
 		ScheduleApplication.get().getHandler().post(() -> {
 			if (ScheduleFragment.get() != null) {
 				ScheduleFragment.get().onCalendarDownloadStarted();
@@ -57,6 +60,8 @@ public class CalendarDownloadAsyncTask extends AsyncTask<Student, Void, AsyncTas
 
 	@Override
 	protected void onPostExecute(AsyncTaskResult<VirtualCalendar> result) {
+		this.downloading = false;
+
 		VirtualCalendar virtualCalendar = result.getResult();
 
 		if (virtualCalendar == null) {
@@ -75,20 +80,27 @@ public class CalendarDownloadAsyncTask extends AsyncTask<Student, Void, AsyncTas
 				callback.accept(virtualCalendar);
 			}
 
-			EventColorManager.get().onNewCalendar();
+			EventColorManager.get().onNewCalendar(virtualCalendar);
 
 			if (ScheduleNotificationService.isRunning(ScheduleApplication.get())) {
+				System.out.println("SERVICE RUNNING");
 				ScheduleNotificationService.get().notifyNewCalendar();
+			} else {
+				System.out.println("SERVICE NOT RUNNING");
 			}
 
 			if (ScheduleFragment.get() != null) {
-				ScheduleFragment.get().onNewCalendar();
+				ScheduleFragment.get().onNewCalendar(virtualCalendar);
 			}
 
 			if (AccountConfigurationIntroSlide.get() != null) {
-				AccountConfigurationIntroSlide.get().onNewCalendar();
+				AccountConfigurationIntroSlide.get().onNewCalendar(virtualCalendar);
 			}
 		}
+	}
+
+	public boolean isDownloading() {
+		return downloading;
 	}
 
 	@FunctionalInterface
