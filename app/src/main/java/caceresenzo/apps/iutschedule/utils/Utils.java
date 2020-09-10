@@ -13,9 +13,9 @@ import androidx.annotation.StringRes;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Function;
 
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
+import caceresenzo.apps.iutschedule.utils.config.Convertor;
 
 public class Utils {
 
@@ -72,17 +72,23 @@ public class Utils {
 		return list.get(ThreadLocalRandom.current().nextInt(0, list.size() - 1));
 	}
 
-	public static <T> T fromConfig(@StringRes int keyId, @StringRes int defaultValueId, Function<String, T> convert, T absoluteDefault) {
+	public static <T> T fromConfig(@StringRes int keyId, @StringRes int defaultValueId, Convertor<String, T> convert, T absoluteDefault) {
 		Context context = ScheduleApplication.get();
 
 		String defaultValue = context.getString(defaultValueId);
-		String rawValue = String.valueOf(((Map<String, Object>) ScheduleApplication.get().getSharedPreferences().getAll()).getOrDefault(context.getString(keyId), defaultValue));
+		String key = context.getString(keyId);
 
-		try {
-			return convert.apply(rawValue);
-		} catch (Exception exception) {
-			return absoluteDefault;
+		Map<String, ?> allValues = ScheduleApplication.get().getSharedPreferences().getAll();
+		if (allValues.containsKey(key)) {
+			String rawValue = String.valueOf(((Map<String, Object>) allValues).get(context.getString(keyId)));
+
+			try {
+				return convert.apply(rawValue);
+			} catch (Exception exception) {
+			}
 		}
+
+		return absoluteDefault;
 	}
 
 }

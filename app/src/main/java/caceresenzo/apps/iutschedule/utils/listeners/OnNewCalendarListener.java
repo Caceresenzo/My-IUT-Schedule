@@ -7,6 +7,6 @@ public interface OnNewCalendarListener {
 	/**
 	 * Called when a new {@link VirtualCalendar calendar} has been downloaded.
 	 */
-	public void onNewCalendar();
+	void onNewCalendar(VirtualCalendar virtualCalendar);
 
 }

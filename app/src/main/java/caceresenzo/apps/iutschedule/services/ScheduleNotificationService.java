@@ -91,12 +91,7 @@ public class ScheduleNotificationService extends Service {
 					}
 
 					if (action.equals(ACTION_STOP)) {
-						ScheduleApplication.get().getHandler().postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								ScheduleApplication.get().shutdown();
-							}
-						}, 500);
+						ScheduleApplication.get().getHandler().postDelayed(() -> ScheduleApplication.get().shutdown(), 500);
 					}
 					break;
 				}
@@ -278,7 +273,7 @@ public class ScheduleNotificationService extends Service {
 				.setSmallIcon(R.mipmap.icon_launcher)
 				.setPriority(NotificationCompat.PRIORITY_DEFAULT)
 				.setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-				.setFullScreenIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0), true)
+				.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0))
 				.addAction(cancelAction)).build();
 	}
 
@@ -432,7 +427,7 @@ public class ScheduleNotificationService extends Service {
 	 * @return Weather it is running or not.
 	 */
 	public static boolean isRunning(Context context) {
-		return Utils.isServiceRunning(context, ScheduleNotificationService.class);
+		return Utils.isServiceRunning(context, ScheduleNotificationService.class) && INSTANCE != null;
 	}
 
 	/**

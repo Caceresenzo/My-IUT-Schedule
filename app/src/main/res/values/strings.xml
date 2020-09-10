@@ -2,10 +2,10 @@
 <resources>
 
     <string name="application_name">My IUT Schedule</string>
-    <string name="application_email">caceresenzo1502@gmail.com</string>
-    <string name="application_github">https://github.com/Caceresenzo/My-IUT-Schedule</string>
+    <string name="application_email" translatable="false">caceresenzo1502@gmail.com</string>
+    <string name="application_github" translatable="false">https://github.com/Caceresenzo/My-IUT-Schedule</string>
     <!--  -->
-    <string name="author_github">https://github.com/Caceresenzo</string>
+    <string name="author_github" translatable="false">https://github.com/Caceresenzo</string>
 
     <!--  -->
     <string name="notification_channel_next_event_title">Next Event</string>
@@ -45,8 +45,8 @@
     <string name="action_about">@string/about</string>
 
     <!--  -->
-    <string name="service_started">Background task has started.</string>
-    <string name="service_stopped">Background task has been stopped.</string>
+    <string name="service_started">Service started.</string>
+    <string name="service_stopped">Service stopped.</string>
     <string name="service_action_stop">Stop</string>
     <string name="service_action_open_event">Open Event</string>
 
@@ -69,34 +69,34 @@
     <!-- Preferences -->
     <string name="pref_main_general_cagetory">General</string>
     <!--  -->
-    <string name="pref_main_general_reset_key">reset</string>
+    <string name="pref_main_general_reset_key" translatable="false">reset</string>
     <string name="pref_main_general_reset_title">Reset</string>
     <string name="pref_main_general_reset_summary">Lunch the setup screen again to change user.</string>
     <!--  -->
     <string name="pref_main_time_cagetory">Time</string>
     <!--  -->
-    <string name="pref_main_time_iteration_relay_key">iteration_delay</string>
-    <string name="pref_main_time_iteration_relay_default">60</string>
+    <string name="pref_main_time_iteration_relay_key" translatable="false">iteration_delay</string>
+    <string name="pref_main_time_iteration_relay_default" translatable="false">60</string>
     <string name="pref_main_time_iteration_relay_title">Iteration Delay</string>
-    <string name="pref_main_time_iteration_relay_summary">%s, is how much time is being wait between two service update, and so, notification update.</string>
-    <string name="pref_main_time_iteration_relay_summary_disabled">Feature disabled, the backgroud service will not be used.</string>
+    <string name="pref_main_time_iteration_relay_summary">%s, the notification is updated.</string>
+    <string name="pref_main_time_iteration_relay_summary_disabled">Notification disabled.</string>
     <!--  -->
-    <string name="pref_main_time_refresh_relay_key">refresh_delay</string>
-    <string name="pref_main_time_refresh_relay_default">10</string>
+    <string name="pref_main_time_refresh_relay_key" translatable="false">refresh_delay</string>
+    <string name="pref_main_time_refresh_relay_default" translatable="false">10</string>
     <string name="pref_main_time_refresh_relay_title">Automatic Refresh Delay</string>
-    <string name="pref_main_time_refresh_relay_summary">%s, is how much iteration has to be done before trying to refresh the calendar.</string>
-    <string name="pref_main_time_refresh_relay_summary_disabled">Feature disabled, the calendar will not be automatically refresh.</string>
+    <string name="pref_main_time_refresh_relay_summary">%s, the calendar is updated.</string>
+    <string name="pref_main_time_refresh_relay_summary_disabled">The calendar will ne be updated.</string>
     <!--  -->
     <string name="pref_main_logging_cagetory">Logging</string>
     <!--  -->
-    <string name="pref_main_logging_service_start_stop_key">logging_service_start_stop</string>
-    <string name="pref_main_logging_service_start_stop_default">false</string>
+    <string name="pref_main_logging_service_start_stop_key" translatable="false">logging_service_start_stop</string>
+    <string name="pref_main_logging_service_start_stop_default" translatable="false">false</string>
     <string name="pref_main_logging_service_start_stop_title">Service Start/Stop</string>
     <string name="pref_main_logging_service_start_stop_summary_enabled">Be notified when the service start or stop.</string>
     <string name="pref_main_logging_service_start_stop_summary_disabled">Don\'t be notified when the service start or stop.</string>
     <!--  -->
-    <string name="pref_main_logging_calendar_download_fail_key">logging_calendar_download_fail</string>
-    <string name="pref_main_logging_calendar_download_fail_default">false</string>
+    <string name="pref_main_logging_calendar_download_fail_key" translatable="false">logging_calendar_download_fail</string>
+    <string name="pref_main_logging_calendar_download_fail_default" translatable="false">false</string>
     <string name="pref_main_logging_calendar_download_fail_title">Calendar Download Fail</string>
     <string name="pref_main_logging_calendar_download_fail_summary_enabled">Be notified when the calendar fail to be correctly downloaded.</string>
     <string name="pref_main_logging_calendar_download_fail_summary_disabled">Don\'t be notified when the calendar fail to be correctly downloaded.</string>
@@ -122,8 +122,8 @@
     <string name="activity_schedule_item_detail">Schedule Item Detail</string>
 
     <!-- Ads -->
-    <string name="ads_application_id">ca-app-pub-8224350508001877~9314220451</string>
-    <string name="ads_id_block_test">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="ads_id_block_event_details">ca-app-pub-8224350508001877/6688057114</string>
+    <string name="ads_application_id" translatable="false">ca-app-pub-8224350508001877~9314220451</string>
+    <string name="ads_id_block_test" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="ads_id_block_event_details" translatable="false">ca-app-pub-8224350508001877/6688057114</string>
 
 </resources>

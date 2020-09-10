@@ -93,8 +93,9 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 
 		changeRefreshState(true);
 
-		if (VirtualCalendarManager.get().getCurrentVirtualCalendar() != null) {
-			onNewCalendar();
+		VirtualCalendar calendar = VirtualCalendarManager.get().getCurrentVirtualCalendar();
+		if (calendar != null) {
+			onNewCalendar(calendar);
 		}
 	}
 
@@ -147,7 +148,7 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 	}
 
 	@Override
-	public void onNewCalendar() {
+	public void onNewCalendar(VirtualCalendar virtualCalendar) {
 		VirtualCalendar calendar = VirtualCalendarManager.get().getCurrentVirtualCalendar();
 
 		this.events.clear();

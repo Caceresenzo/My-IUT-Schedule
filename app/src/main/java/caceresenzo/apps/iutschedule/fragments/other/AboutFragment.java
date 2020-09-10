@@ -10,12 +10,21 @@ import com.marcoscg.easyabout.items.AboutCard;
 import com.marcoscg.easyabout.items.NormalAboutItem;
 import com.marcoscg.easyabout.items.PersonAboutItem;
 
+import caceresenzo.apps.iutschedule.BuildConfig;
 import caceresenzo.apps.iutschedule.R;
 
 public class AboutFragment extends EasyAboutFragment {
 
 	@Override
 	protected void configureFragment(Context context, View rootView, Bundle savedInstanceState) {
+		if (BuildConfig.DEBUG) {
+			addCard(new AboutCard.Builder(context)
+					.addItem(new NormalAboutItem.Builder(context)
+							.setTitle("Debug Build")
+							.build())
+					.build());
+		}
+
 		addCard(new AboutCard.Builder(context)
 				.addItem(AboutItemBuilder.generateAppTitleItem(context)
 						.setSubtitle(R.string.about_application_author))
