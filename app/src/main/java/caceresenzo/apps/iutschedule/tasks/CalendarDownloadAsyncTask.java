@@ -3,9 +3,6 @@ package caceresenzo.apps.iutschedule.tasks;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import java.util.Objects;
-import java.util.function.Consumer;
-
 import caceresenzo.apps.iutschedule.R;
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
 import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;

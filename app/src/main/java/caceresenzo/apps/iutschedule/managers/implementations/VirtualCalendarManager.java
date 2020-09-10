@@ -1,25 +1,13 @@
 package caceresenzo.apps.iutschedule.managers.implementations;
 
-import android.os.AsyncTask;
-import android.widget.Toast;
-
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 import caceresenzo.apps.iutschedule.R;
-import caceresenzo.apps.iutschedule.application.ScheduleApplication;
 import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
 import caceresenzo.apps.iutschedule.calendar.VirtualCalendarEvent;
-import caceresenzo.apps.iutschedule.calendar.parser.VirtualCalendarRemoteParser;
-import caceresenzo.apps.iutschedule.fragments.intro.sliders.AccountConfigurationIntroSlide;
-import caceresenzo.apps.iutschedule.fragments.schedule.ScheduleFragment;
 import caceresenzo.apps.iutschedule.managers.AbstractManager;
 import caceresenzo.apps.iutschedule.models.Student;
-import caceresenzo.apps.iutschedule.services.ScheduleNotificationService;
 import caceresenzo.apps.iutschedule.tasks.CalendarDownloadAsyncTask;
-import caceresenzo.apps.iutschedule.utils.AsyncTaskResult;
 import caceresenzo.apps.iutschedule.utils.Utils;
 
 public class VirtualCalendarManager extends AbstractManager {

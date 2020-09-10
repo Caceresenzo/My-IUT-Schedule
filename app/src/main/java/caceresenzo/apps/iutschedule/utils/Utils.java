@@ -13,7 +13,6 @@ import androidx.annotation.StringRes;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Function;
 
 import caceresenzo.apps.iutschedule.application.ScheduleApplication;
 import caceresenzo.apps.iutschedule.utils.config.Convertor;
