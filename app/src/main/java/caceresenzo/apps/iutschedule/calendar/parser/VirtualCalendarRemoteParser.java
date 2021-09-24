@@ -41,6 +41,7 @@ public class VirtualCalendarRemoteParser {
 		try (Response response = client.newCall(new Request.Builder()
 				.url(SERVER_URL)
 				.header("Content-Type", "application/x-www-form-urlencoded")
+				.header("Accept", "*/*")
 				.post(new FormBody.Builder()
 						.add("action", "displayWeeksPeople")
 						.add("person", String.valueOf(studentId))
