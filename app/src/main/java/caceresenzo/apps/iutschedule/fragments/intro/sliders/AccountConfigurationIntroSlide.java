@@ -139,10 +139,15 @@ public class AccountConfigurationIntroSlide extends SlideFragment implements OnN
 	}
 
 	@Override
-	public void onCalendarDownloadFailed() {
+	public void onCalendarDownloadFailed(Exception exception) {
 		enableInputs(true);
 
-		publishState(R.string.intro_account_state_error, "FAILED");
+		String message = "FAILED";
+		if (exception != null) {
+			message = exception.getMessage();
+		}
+
+		publishState(R.string.intro_account_state_error, message);
 	}
 
 	@Override

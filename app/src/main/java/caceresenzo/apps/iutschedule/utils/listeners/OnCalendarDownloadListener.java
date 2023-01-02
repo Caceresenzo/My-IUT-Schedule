@@ -4,6 +4,6 @@ public interface OnCalendarDownloadListener {
 
 	public void onCalendarDownloadStarted();
 
-	public void onCalendarDownloadFailed();
+	public void onCalendarDownloadFailed(Exception exception);
 
 }

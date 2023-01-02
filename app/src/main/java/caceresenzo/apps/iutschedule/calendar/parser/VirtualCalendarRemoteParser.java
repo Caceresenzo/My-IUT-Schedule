@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import caceresenzo.apps.iutschedule.calendar.VirtualCalendar;
+import caceresenzo.apps.iutschedule.utils.ssl.NullHostnameVerifier;
+import caceresenzo.apps.iutschedule.utils.ssl.NullTrustManager;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,7 +38,10 @@ public class VirtualCalendarRemoteParser {
 	 * @throws Exception If an error append when network-related or regex-related exception are throws.
 	 */
 	public VirtualCalendar parse() throws Exception {
-		OkHttpClient client = new OkHttpClient();
+		OkHttpClient client = new OkHttpClient.Builder()
+				.sslSocketFactory(NullTrustManager.createSocketFactory(), NullTrustManager.INTERFACE)
+				.hostnameVerifier(NullHostnameVerifier.INSTANCE)
+				.build();
 
 		try (Response response = client.newCall(new Request.Builder()
 				.url(SERVER_URL)

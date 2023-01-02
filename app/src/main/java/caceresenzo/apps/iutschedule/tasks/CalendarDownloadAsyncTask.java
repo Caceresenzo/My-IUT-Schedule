@@ -54,7 +54,6 @@ public class CalendarDownloadAsyncTask extends AsyncTask<Student, Void, AsyncTas
 		}
 	}
 
-
 	@Override
 	protected void onPostExecute(AsyncTaskResult<VirtualCalendar> result) {
 		this.downloading = false;
@@ -67,10 +66,10 @@ public class CalendarDownloadAsyncTask extends AsyncTask<Student, Void, AsyncTas
 			}
 
 			if (ScheduleFragment.get() != null) {
-				ScheduleFragment.get().onCalendarDownloadFailed();
+				ScheduleFragment.get().onCalendarDownloadFailed(result.getException());
 			}
 			if (AccountConfigurationIntroSlide.get() != null) {
-				AccountConfigurationIntroSlide.get().onCalendarDownloadFailed();
+				AccountConfigurationIntroSlide.get().onCalendarDownloadFailed(result.getException());
 			}
 		} else {
 			if (callback != null) {

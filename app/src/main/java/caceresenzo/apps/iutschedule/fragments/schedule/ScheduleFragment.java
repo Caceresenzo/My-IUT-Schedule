@@ -169,7 +169,7 @@ public class ScheduleFragment extends BaseFragment implements OnNewCalendarListe
 	}
 
 	@Override
-	public void onCalendarDownloadFailed() {
+	public void onCalendarDownloadFailed(Exception exception) {
 		changeRefreshState(false);
 	}
 
