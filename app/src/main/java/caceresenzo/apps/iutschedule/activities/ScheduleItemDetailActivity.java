@@ -120,26 +120,28 @@ public class ScheduleItemDetailActivity extends AppCompatActivity {
 				.setTitle(event.getEscapedDescription())
 				.build());
 
-		AdView adView = new AdView(this);
-		adView.setAdSize(AdSize.BANNER);
+		if (!Utils.fromConfig(R.string.pref_main_ads_disabled_key, R.string.pref_main_ads_disabled_default, Boolean::parseBoolean, false)) {
+			AdView adView = new AdView(this);
+			adView.setAdSize(AdSize.BANNER);
 
-		int adUnitId = R.string.ads_id_block_event_details;
-		if (BuildConfig.DEBUG) {
-			adUnitId = R.string.ads_id_block_test;
-		}
-
-		adView.setAdUnitId(getString(adUnitId));
-		adView.setAdListener(new AdListener() {
-			@Override
-			public void onAdLoaded() {
-				addCardItem(null, new CustomAboutItem.Builder(ScheduleItemDetailActivity.this)
-						.setIcon(R.drawable.icon_money_white_24dp)
-						.setView(adView)
-						.build());
+			int adUnitId = R.string.ads_id_block_event_details;
+			if (BuildConfig.DEBUG) {
+				adUnitId = R.string.ads_id_block_test;
 			}
-		});
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.loadAd(adRequest);
+
+			adView.setAdUnitId(getString(adUnitId));
+			adView.setAdListener(new AdListener() {
+				@Override
+				public void onAdLoaded() {
+					addCardItem(null, new CustomAboutItem.Builder(ScheduleItemDetailActivity.this)
+							.setIcon(R.drawable.icon_money_white_24dp)
+							.setView(adView)
+							.build());
+				}
+			});
+			AdRequest adRequest = new AdRequest.Builder().build();
+			adView.loadAd(adRequest);
+		}
 	}
 
 	/**

@@ -24,6 +24,14 @@
             android:key="@string/pref_main_time_refresh_relay_key"
             android:title="@string/pref_main_time_refresh_relay_title" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_main_ads_category">
+        <SwitchPreference
+            android:defaultValue="@string/pref_main_ads_disabled_default"
+            android:key="@string/pref_main_ads_disabled_key"
+            android:title="@string/pref_main_ads_disabled_title"
+            android:summary="@string/pref_main_ads_disabled_summary_enabled"
+            android:summaryOff="@string/pref_main_ads_disabled_summary_disabled" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_main_logging_cagetory">
         <SwitchPreference
             android:defaultValue="@string/pref_main_logging_service_start_stop_default"

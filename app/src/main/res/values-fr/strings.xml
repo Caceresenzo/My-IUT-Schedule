@@ -77,6 +77,13 @@
     <string name="pref_main_time_refresh_relay_summary">%s, le calendrier est mis-à-jour .</string>
     <string name="pref_main_time_refresh_relay_summary_disabled">Le calendrier ne sera jamais rafraîchit automatiquement.</string>
     <!--  -->
+    <string name="pref_main_ads_category">Publicités</string>
+    <!--  -->
+    <string name="pref_main_ads_disabled_title">Désactiver les Publicités</string>
+    <string name="pref_main_ads_disabled_summary_enabled">Les publicités sont désactivées :(</string>
+    <string name="pref_main_ads_disabled_summary_disabled">Les publicités sont activées :)</string>
+    <!--  -->
+    <!--  -->
     <string name="pref_main_logging_cagetory">Journalisation</string>
     <!--  -->
     <string name="pref_main_logging_service_start_stop_title">Démarrage/Arrêt du Service</string>
