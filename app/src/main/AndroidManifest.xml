@@ -20,7 +20,8 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/application_name"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
