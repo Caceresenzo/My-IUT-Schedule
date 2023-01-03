@@ -262,10 +262,14 @@ public class ScheduleNotificationService extends Service {
 	 * Create the {@link Notification notification} that will be displayed.
 	 */
 	private Notification createNotification() {
-		Intent cancelIntent = new Intent(this, ScheduleNotificationService.class);
-		cancelIntent.setAction(ACTION_STOP);
-		PendingIntent cancelPendingIntent = PendingIntent.getService(this, 0, cancelIntent, 0);
+		int flags = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE;
+
+		Intent cancelIntent = new Intent(this, ScheduleNotificationService.class).setAction(ACTION_STOP);
+		PendingIntent cancelPendingIntent = PendingIntent.getService(this, 0, cancelIntent, flags);
 		NotificationCompat.Action cancelAction = new NotificationCompat.Action(R.drawable.icon_stop_black_24dp, getString(R.string.service_action_stop), cancelPendingIntent);
+
+		Intent contentIntent = new Intent(this, MainActivity.class);
+		PendingIntent contentPendingIntent = PendingIntent.getActivity(this, 0, contentIntent, flags);
 
 		return attachNotificationRemoteViews(new NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL.NEXT_EVENT)
 				.setOnlyAlertOnce(true)
@@ -273,7 +277,7 @@ public class ScheduleNotificationService extends Service {
 				.setSmallIcon(R.mipmap.icon_launcher)
 				.setPriority(NotificationCompat.PRIORITY_DEFAULT)
 				.setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-				.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0))
+				.setContentIntent(contentPendingIntent)
 				.addAction(cancelAction)).build();
 	}
 
