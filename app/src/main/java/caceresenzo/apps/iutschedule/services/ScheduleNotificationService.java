@@ -45,6 +45,7 @@ public class ScheduleNotificationService extends Service {
 	public static final String ACTION_STOP_FOREGROUND_SERVICE = "ACTION_STOP_FOREGROUND_SERVICE";
 
 	public static final String ACTION_STOP = "ACTION_STOP";
+	public static final int INTENT_FLAGS = getIntentFlags();
 
 	/* Singleton */
 	private static ScheduleNotificationService INSTANCE;
@@ -221,7 +222,7 @@ public class ScheduleNotificationService extends Service {
 					}
 
 					Intent openEventIntent = ScheduleItemDetailActivity.createStartIntent(event, EventColorManager.get().getEventColor(event));
-					PendingIntent openEventPendingIntent = PendingIntent.getActivity(this, 0, openEventIntent, 0);
+					PendingIntent openEventPendingIntent = PendingIntent.getActivity(this, 0, openEventIntent, INTENT_FLAGS);
 					builder.addAction(new NotificationCompat.Action(R.drawable.icon_open_in_app_black_24dp, getString(R.string.service_action_open_event), openEventPendingIntent));
 
 					mainText = event.getSummary();
@@ -262,23 +263,27 @@ public class ScheduleNotificationService extends Service {
 	 * Create the {@link Notification notification} that will be displayed.
 	 */
 	private Notification createNotification() {
-		int flags = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE;
-
 		Intent cancelIntent = new Intent(this, ScheduleNotificationService.class).setAction(ACTION_STOP);
-		PendingIntent cancelPendingIntent = PendingIntent.getService(this, 0, cancelIntent, flags);
+		PendingIntent cancelPendingIntent = PendingIntent.getService(this, 0, cancelIntent, INTENT_FLAGS);
 		NotificationCompat.Action cancelAction = new NotificationCompat.Action(R.drawable.icon_stop_black_24dp, getString(R.string.service_action_stop), cancelPendingIntent);
 
 		Intent contentIntent = new Intent(this, MainActivity.class);
-		PendingIntent contentPendingIntent = PendingIntent.getActivity(this, 0, contentIntent, flags);
+		PendingIntent contentPendingIntent = PendingIntent.getActivity(this, 0, contentIntent, INTENT_FLAGS);
 
-		return attachNotificationRemoteViews(new NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL.NEXT_EVENT)
+		NotificationCompat.Builder builder = new NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL.NEXT_EVENT)
 				.setOnlyAlertOnce(true)
 				.setWhen(System.currentTimeMillis())
 				.setSmallIcon(R.mipmap.icon_launcher)
 				.setPriority(NotificationCompat.PRIORITY_DEFAULT)
 				.setStyle(new NotificationCompat.DecoratedCustomViewStyle())
 				.setContentIntent(contentPendingIntent)
-				.addAction(cancelAction)).build();
+				.addAction(cancelAction);
+
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+			builder.setForegroundServiceBehavior(Notification.FOREGROUND_SERVICE_IMMEDIATE);
+		}
+
+		return attachNotificationRemoteViews(builder).build();
 	}
 
 	/**
@@ -466,19 +471,38 @@ public class ScheduleNotificationService extends Service {
 	 * @param context Application's context.
 	 * @param intent  {@link Intent} to send.
 	 */
-	private static void executeServiceIntent(Context context, Intent intent) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-			context.startForegroundService(intent);
-		} else {
-			context.startService(intent);
+	private static boolean executeServiceIntent(Context context, Intent intent) {
+		try {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+				context.startForegroundService(intent);
+			} else {
+				context.startService(intent);
+			}
+
+			return true;
+		} catch (IllegalStateException exception) {
+			if ("android.app.ForegroundServiceStartNotAllowedException".equals(exception.getClass().getName())) {
+				Toast.makeText(context, R.string.service_cannot_start, Toast.LENGTH_SHORT).show();
+				return false;
+			} else {
+				throw exception;
+			}
 		}
 	}
 
 	/**
 	 * @return ScheduleNotificationService's singleton instance.
 	 */
-	public static final ScheduleNotificationService get() {
+	public static ScheduleNotificationService get() {
 		return INSTANCE;
+	}
+
+	public static int getIntentFlags() {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			return PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
+		} else {
+			return 0;
+		}
 	}
 
 }
