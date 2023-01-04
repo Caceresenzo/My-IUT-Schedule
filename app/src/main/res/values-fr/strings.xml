@@ -35,6 +35,7 @@
     <string name="service_stopped">Le service a été arrété.</string>
     <string name="service_action_stop">Arrêter</string>
     <string name="service_action_open_event">Ouvrir l\'Événement</string>
+    <string name="service_cannot_start">Le service ne peut pas être démarré.</string>
 
     <!--  -->
     <string name="action_today">Aujourd\'hui</string>

@@ -49,6 +49,7 @@
     <string name="service_stopped">Service stopped.</string>
     <string name="service_action_stop">Stop</string>
     <string name="service_action_open_event">Open Event</string>
+    <string name="service_cannot_start">Service cannot be started.</string>
 
     <!--  -->
     <string name="downloading_calendar">Downloading calendar...</string>
