@@ -216,11 +216,6 @@ public class ScheduleNotificationService extends Service {
 						event = nextEvent;
 					}
 
-					/* Should not append */
-					if (notificationBigLayout == null) {
-						throw new IllegalStateException("Can't be null.");
-					}
-
 					Intent openEventIntent = ScheduleItemDetailActivity.createStartIntent(event, EventColorManager.get().getEventColor(event));
 					PendingIntent openEventPendingIntent = PendingIntent.getActivity(this, 0, openEventIntent, INTENT_FLAGS);
 					builder.addAction(new NotificationCompat.Action(R.drawable.icon_open_in_app_black_24dp, getString(R.string.service_action_open_event), openEventPendingIntent));
@@ -361,7 +356,7 @@ public class ScheduleNotificationService extends Service {
 
 					updateNotification();
 				}
-			}, 0, 1000 * getIterationDelay());
+			}, 0, 1000L * getIterationDelay());
 		}
 	}
 
