@@ -14,6 +14,8 @@
     <!--  -->
     <string name="intro_welcome_title">Welcome</string>
     <string name="intro_welcome_description">on your new scheduler</string>
+    <string name="intro_permission_title">Permission required</string>
+    <string name="intro_permission_description">for this app. to work properly</string>
     <string name="intro_source_public_title">Public Source Code</string>
     <string name="intro_source_public_description">you can at any moment read the code online\n(just go in the About section)</string>
     <string name="intro_school_title">Compatible Schools</string>

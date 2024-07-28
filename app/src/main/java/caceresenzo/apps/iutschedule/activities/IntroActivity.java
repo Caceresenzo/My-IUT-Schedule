@@ -1,5 +1,6 @@
 package caceresenzo.apps.iutschedule.activities;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,6 +38,17 @@ public class IntroActivity extends MaterialIntroActivity {
 					.image(R.mipmap.icon_launcher_round)
 					.title(getString(R.string.intro_welcome_title))
 					.description(getString(R.string.intro_welcome_description))
+					.build());
+
+			addSlide(new SlideFragmentBuilder()
+					.neededPermissions(new String[]{
+							Manifest.permission.POST_NOTIFICATIONS
+					})
+					.backgroundColor(R.color.colorPrimary)
+					.buttonsColor(R.color.colorAccent)
+					.image(R.drawable.icon_bell_ring_white_24dp)
+					.title(getString(R.string.intro_permission_title))
+					.description(getString(R.string.intro_permission_description))
 					.build());
 
 			addSlide(new SlideFragmentBuilder()

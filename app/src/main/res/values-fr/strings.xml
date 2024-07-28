@@ -10,6 +10,8 @@
     <!--  -->
     <string name="intro_welcome_title">Bienvenue</string>
     <string name="intro_welcome_description">sur ton nouvel emploi du temps</string>
+    <string name="intro_permission_title">Permissions requises</string>
+    <string name="intro_permission_description">pour que cette app. fonctionne correctement</string>
     <string name="intro_source_public_title">Code Source Public</string>
     <string name="intro_source_public_description">tu peux à n\'importe quel moment lire le code source en ligne\n(va juste dans la section \"A propos\")</string>
     <string name="intro_school_title">École Compatible</string>
