@@ -19,7 +19,7 @@ I may update this Privacy Policy from time to time. Any changes will be posted o
 
 ### Contact
 
-If you have any questions or concerns about this Privacy Policy, please feel free to contact me at [Your Contact Information].
+If you have any questions or concerns about this Privacy Policy, please feel free to contact me at caceresenzo1502@gmail.com.
 
 By using my Service, you acknowledge that your data remains solely on your device and agree to the terms of this Privacy Policy.
 
