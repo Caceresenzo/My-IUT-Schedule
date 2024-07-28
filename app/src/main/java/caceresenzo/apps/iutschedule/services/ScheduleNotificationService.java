@@ -42,10 +42,11 @@ public class ScheduleNotificationService extends Service {
 	public static final String TAG = ScheduleNotificationService.class.getSimpleName();
 
 	/* Constants */
-	public static final String ACTION_START_FOREGROUND_SERVICE = "ACTION_START_FOREGROUND_SERVICE";
-	public static final String ACTION_STOP_FOREGROUND_SERVICE = "ACTION_STOP_FOREGROUND_SERVICE";
+	public static final String ACTION_STOP = "stop";
+	public static final String ACTION_START_FOREGROUND_SERVICE = "start_foreground";
+	public static final String ACTION_STOP_FOREGROUND_SERVICE = "stop_foreground";
+	public static final String ACTION_REFRESH_NOTIFICATION = "refresh_notification";
 
-	public static final String ACTION_STOP = "ACTION_STOP";
 	public static final int INTENT_FLAGS = getIntentFlags();
 
 	/* Singleton */
@@ -95,6 +96,11 @@ public class ScheduleNotificationService extends Service {
 					if (action.equals(ACTION_STOP)) {
 						ScheduleApplication.get().getHandler().postDelayed(() -> ScheduleApplication.get().shutdown(), 500);
 					}
+					break;
+				}
+
+				case ACTION_REFRESH_NOTIFICATION: {
+					getNotificationManager().notify(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE, createNotification());
 					break;
 				}
 
@@ -273,6 +279,10 @@ public class ScheduleNotificationService extends Service {
 		Intent contentIntent = new Intent(this, MainActivity.class);
 		PendingIntent contentPendingIntent = PendingIntent.getActivity(this, 0, contentIntent, INTENT_FLAGS);
 
+		Intent deleteIntent = new Intent(this, ScheduleNotificationService.class);
+		deleteIntent.setAction(ACTION_REFRESH_NOTIFICATION);
+		PendingIntent deletePendingIntent = PendingIntent.getService(this, 0, deleteIntent, INTENT_FLAGS);
+
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(this, Constants.NOTIFICATION_CHANNEL.NEXT_EVENT)
 				.setOnlyAlertOnce(true)
 				.setWhen(System.currentTimeMillis())
@@ -280,6 +290,7 @@ public class ScheduleNotificationService extends Service {
 				.setPriority(NotificationCompat.PRIORITY_DEFAULT)
 				.setStyle(new NotificationCompat.DecoratedCustomViewStyle())
 				.setContentIntent(contentPendingIntent)
+				.setDeleteIntent(deletePendingIntent)
 				.addAction(cancelAction);
 
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
@@ -410,6 +421,10 @@ public class ScheduleNotificationService extends Service {
 	 */
 	public static int getRefreshDelay() {
 		return Utils.fromConfig(R.string.pref_main_time_refresh_relay_key, R.string.pref_main_time_refresh_relay_default, Integer::parseInt, 10);
+	}
+
+	private NotificationManager getNotificationManager() {
+		return (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 	}
 
 	/**
