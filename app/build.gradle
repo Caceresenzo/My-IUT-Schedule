@@ -2,13 +2,21 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion "30.0.2"
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\cacer\\OneDrive\\Developments\\Android\\androidsign pass password.key')
+            storePassword 'password'
+            keyAlias 'enzo caceres'
+            keyPassword 'password'
+        }
+    }
+
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "caceresenzo.apps.iutschedule"
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 34
         versionCode 1420
         versionName "1.4.2"
 
@@ -35,6 +43,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
