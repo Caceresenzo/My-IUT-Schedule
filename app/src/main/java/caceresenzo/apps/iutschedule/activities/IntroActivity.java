@@ -40,16 +40,18 @@ public class IntroActivity extends MaterialIntroActivity {
 					.description(getString(R.string.intro_welcome_description))
 					.build());
 
-			addSlide(new SlideFragmentBuilder()
-					.neededPermissions(new String[]{
-							Manifest.permission.POST_NOTIFICATIONS
-					})
-					.backgroundColor(R.color.colorPrimary)
-					.buttonsColor(R.color.colorAccent)
-					.image(R.drawable.icon_bell_ring_white_24dp)
-					.title(getString(R.string.intro_permission_title))
-					.description(getString(R.string.intro_permission_description))
-					.build());
+			if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+				addSlide(new SlideFragmentBuilder()
+						.neededPermissions(new String[]{
+								Manifest.permission.POST_NOTIFICATIONS
+						})
+						.backgroundColor(R.color.colorPrimary)
+						.buttonsColor(R.color.colorAccent)
+						.image(R.drawable.icon_bell_ring_white_24dp)
+						.title(getString(R.string.intro_permission_title))
+						.description(getString(R.string.intro_permission_description))
+						.build());
+			}
 
 			addSlide(new SlideFragmentBuilder()
 					.backgroundColor(R.color.colorPrimary)
